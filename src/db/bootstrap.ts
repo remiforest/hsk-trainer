@@ -13,8 +13,16 @@ import { snapshotBeforeMigration } from './pre-migration'
 import { maybeCreateDailySnapshot, listSnapshots } from './snapshots'
 import { getAllCards } from './repositories/cards'
 import { getAllEvents } from './repositories/events'
-import { ensureProgress, ensureSettings, getProgress, getSettings } from './repositories/singletons'
+import {
+  ensureProgress,
+  ensureSettings,
+  getMeta,
+  getProgress,
+  getSettings,
+  setMeta,
+} from './repositories/singletons'
 import { checkIntegrity } from '../core/integrity/check'
+import { FSRS_PARAMS_VERSION } from '../core/srs/scheduler'
 import { type ContentCatalog } from '../types/content'
 import { type SnapshotMeta } from '../types/backup'
 import { type IntegrityReport } from '../types/integrity'
@@ -62,6 +70,11 @@ export async function bootstrap(deps: BootstrapDeps): Promise<BootstrapResult> {
 
   await ensureSettings(db)
   await ensureProgress(db)
+
+  // Trace la version des paramètres FSRS utilisée (utile au rejeu après upgrade).
+  if ((await getMeta(db, 'fsrsParamsVersion')) === null) {
+    await setMeta(db, 'fsrsParamsVersion', FSRS_PARAMS_VERSION)
+  }
 
   const [cards, events, settings, userProgress] = await Promise.all([
     getAllCards(db),
