@@ -11,7 +11,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['./src/test/setup.ts'],
+    // `fake-indexeddb/auto` en premier : Dexie capture `indexedDB` au chargement
+    // du module, il doit donc être présent avant tout import de `dexie`.
+    setupFiles: ['fake-indexeddb/auto', './src/test/setup.ts'],
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
     coverage: {
       provider: 'v8',

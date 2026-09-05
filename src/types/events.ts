@@ -67,13 +67,17 @@ export type JournalEvent =
 
 export type JournalEventKind = JournalEvent['kind']
 
-/** Données d'un événement avant attribution de `id` / `seq` / `at`. */
+/**
+ * Données d'un événement avant persistance : `id` et `seq` sont attribués par le
+ * dépôt (`seq` monotone, dans la transaction). `at` (horloge murale) reste fourni
+ * par l'appelant — c'est l'instant réel de la révision.
+ */
 export type NewJournalEvent =
-  | Omit<CardCreatedEvent, 'id' | 'seq' | 'at'>
-  | Omit<ReviewEvent, 'id' | 'seq' | 'at'>
-  | Omit<CardSuspendedEvent, 'id' | 'seq' | 'at'>
-  | Omit<CardUnsuspendedEvent, 'id' | 'seq' | 'at'>
-  | Omit<LessonCompletedEvent, 'id' | 'seq' | 'at'>
+  | Omit<CardCreatedEvent, 'id' | 'seq'>
+  | Omit<ReviewEvent, 'id' | 'seq'>
+  | Omit<CardSuspendedEvent, 'id' | 'seq'>
+  | Omit<CardUnsuspendedEvent, 'id' | 'seq'>
+  | Omit<LessonCompletedEvent, 'id' | 'seq'>
 
 export function isReviewEvent(e: JournalEvent): e is ReviewEvent {
   return e.kind === 'card_reviewed'
