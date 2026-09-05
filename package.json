@@ -23,8 +23,10 @@
     "validate:data": "tsx scripts/validate-data.ts"
   },
   "dependencies": {
+    "dexie": "^4.4.5",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -42,6 +44,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
+    "fake-indexeddb": "^6.2.5",
     "globals": "^17.12.0",
     "jsdom": "^30.0.1",
     "prettier": "^3.9.6",
