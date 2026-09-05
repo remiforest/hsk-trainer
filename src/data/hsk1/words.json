@@ -1,0 +1,2170 @@
+[
+  {
+    "id": "w-0001",
+    "hanzi": "你好",
+    "pinyin": "nǐ hǎo",
+    "fr": "bonjour",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "你好！", "pinyin": "nǐ hǎo", "fr": "Bonjour !" }]
+  },
+  {
+    "id": "w-0002",
+    "hanzi": "谢谢",
+    "pinyin": "xiè xie",
+    "fr": "merci",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "谢谢你。", "pinyin": "xiè xie nǐ", "fr": "Merci." }]
+  },
+  {
+    "id": "w-0003",
+    "hanzi": "不客气",
+    "pinyin": "bú kè qi",
+    "fr": "de rien",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "不客气。", "pinyin": "bú kè qi", "fr": "De rien." }]
+  },
+  {
+    "id": "w-0004",
+    "hanzi": "再见",
+    "pinyin": "zài jiàn",
+    "fr": "au revoir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [
+      { "hanzi": "老师，再见！", "pinyin": "lǎo shī, zài jiàn", "fr": "Au revoir, professeur !" }
+    ]
+  },
+  {
+    "id": "w-0005",
+    "hanzi": "对不起",
+    "pinyin": "duì bu qǐ",
+    "fr": "pardon, désolé",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "对不起。", "pinyin": "duì bu qǐ", "fr": "Désolé." }]
+  },
+  {
+    "id": "w-0006",
+    "hanzi": "没关系",
+    "pinyin": "méi guān xi",
+    "fr": "ce n'est rien",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "没关系。", "pinyin": "méi guān xi", "fr": "Ce n'est rien." }]
+  },
+  {
+    "id": "w-0007",
+    "hanzi": "请",
+    "pinyin": "qǐng",
+    "fr": "s'il vous plaît ; prier de",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["politesse"],
+    "exemples": [{ "hanzi": "请坐。", "pinyin": "qǐng zuò", "fr": "Asseyez-vous, je vous prie." }]
+  },
+  {
+    "id": "w-0008",
+    "hanzi": "喂",
+    "pinyin": "wéi",
+    "fr": "allô",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "interjection",
+    "themes": ["politesse", "quotidien"],
+    "exemples": [{ "hanzi": "喂，你好！", "pinyin": "wéi, nǐ hǎo", "fr": "Allô, bonjour !" }]
+  },
+
+  {
+    "id": "w-0009",
+    "hanzi": "我",
+    "pinyin": "wǒ",
+    "fr": "je, moi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom"],
+    "exemples": [{ "hanzi": "我是学生。", "pinyin": "wǒ shì xué sheng", "fr": "Je suis étudiant." }]
+  },
+  {
+    "id": "w-0010",
+    "hanzi": "你",
+    "pinyin": "nǐ",
+    "fr": "tu, toi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom"],
+    "exemples": [{ "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma", "fr": "Comment vas-tu ?" }]
+  },
+  {
+    "id": "w-0011",
+    "hanzi": "他",
+    "pinyin": "tā",
+    "fr": "il, lui",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom"],
+    "exemples": [{ "hanzi": "他是老师。", "pinyin": "tā shì lǎo shī", "fr": "Il est professeur." }]
+  },
+  {
+    "id": "w-0012",
+    "hanzi": "她",
+    "pinyin": "tā",
+    "fr": "elle",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom"],
+    "exemples": [{ "hanzi": "她是我妈妈。", "pinyin": "tā shì wǒ mā ma", "fr": "C'est ma mère." }]
+  },
+  {
+    "id": "w-0013",
+    "hanzi": "我们",
+    "pinyin": "wǒ men",
+    "fr": "nous",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom"],
+    "exemples": [
+      { "hanzi": "我们是朋友。", "pinyin": "wǒ men shì péng you", "fr": "Nous sommes amis." }
+    ]
+  },
+  {
+    "id": "w-0014",
+    "hanzi": "这",
+    "pinyin": "zhè",
+    "fr": "ceci, ce",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "déterminant",
+    "themes": ["pronom"],
+    "exemples": [
+      { "hanzi": "这是什么？", "pinyin": "zhè shì shén me", "fr": "Qu'est-ce que c'est ?" }
+    ]
+  },
+  {
+    "id": "w-0015",
+    "hanzi": "那",
+    "pinyin": "nà",
+    "fr": "cela, ce (là)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "déterminant",
+    "themes": ["pronom"],
+    "exemples": [
+      { "hanzi": "那是我的书。", "pinyin": "nà shì wǒ de shū", "fr": "C'est mon livre." }
+    ]
+  },
+  {
+    "id": "w-0016",
+    "hanzi": "哪",
+    "pinyin": "nǎ",
+    "fr": "quel, lequel",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "déterminant",
+    "themes": ["pronom", "question"],
+    "exemples": [
+      { "hanzi": "你是哪国人？", "pinyin": "nǐ shì nǎ guó rén", "fr": "De quel pays es-tu ?" }
+    ]
+  },
+  {
+    "id": "w-0017",
+    "hanzi": "这儿",
+    "pinyin": "zhèr",
+    "fr": "ici",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom", "position"],
+    "exemples": [{ "hanzi": "请坐这儿。", "pinyin": "qǐng zuò zhèr", "fr": "Asseyez-vous ici." }]
+  },
+  {
+    "id": "w-0018",
+    "hanzi": "那儿",
+    "pinyin": "nàr",
+    "fr": "là, là-bas",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom", "position"],
+    "exemples": [{ "hanzi": "他在那儿。", "pinyin": "tā zài nàr", "fr": "Il est là-bas." }]
+  },
+  {
+    "id": "w-0019",
+    "hanzi": "哪儿",
+    "pinyin": "nǎr",
+    "fr": "où",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["pronom", "question"],
+    "exemples": [{ "hanzi": "你去哪儿？", "pinyin": "nǐ qù nǎr", "fr": "Où vas-tu ?" }]
+  },
+
+  {
+    "id": "w-0020",
+    "hanzi": "谁",
+    "pinyin": "shéi",
+    "fr": "qui",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question"],
+    "exemples": [{ "hanzi": "他是谁？", "pinyin": "tā shì shéi", "fr": "Qui est-ce ?" }]
+  },
+  {
+    "id": "w-0021",
+    "hanzi": "什么",
+    "pinyin": "shén me",
+    "fr": "quoi, quel",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question"],
+    "exemples": [
+      {
+        "hanzi": "你叫什么名字？",
+        "pinyin": "nǐ jiào shén me míng zi",
+        "fr": "Comment t'appelles-tu ?"
+      }
+    ]
+  },
+  {
+    "id": "w-0022",
+    "hanzi": "多少",
+    "pinyin": "duō shao",
+    "fr": "combien",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question", "nombre"],
+    "exemples": [
+      { "hanzi": "这个多少钱？", "pinyin": "zhè ge duō shao qián", "fr": "Combien ça coûte ?" }
+    ]
+  },
+  {
+    "id": "w-0023",
+    "hanzi": "几",
+    "pinyin": "jǐ",
+    "fr": "combien (petit nombre)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question", "nombre"],
+    "exemples": [
+      { "hanzi": "现在几点？", "pinyin": "xiàn zài jǐ diǎn", "fr": "Quelle heure est-il ?" }
+    ]
+  },
+  {
+    "id": "w-0024",
+    "hanzi": "怎么",
+    "pinyin": "zěn me",
+    "fr": "comment",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question"],
+    "exemples": [
+      {
+        "hanzi": "这个字怎么读？",
+        "pinyin": "zhè ge zì zěn me dú",
+        "fr": "Comment lit-on ce caractère ?"
+      }
+    ]
+  },
+  {
+    "id": "w-0025",
+    "hanzi": "怎么样",
+    "pinyin": "zěn me yàng",
+    "fr": "comment ça va, qu'en penses-tu",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "pronom",
+    "themes": ["question"],
+    "exemples": [
+      {
+        "hanzi": "今天天气怎么样？",
+        "pinyin": "jīn tiān tiān qì zěn me yàng",
+        "fr": "Quel temps fait-il aujourd'hui ?"
+      }
+    ]
+  },
+
+  {
+    "id": "w-0026",
+    "hanzi": "一",
+    "pinyin": "yī",
+    "fr": "un",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [{ "hanzi": "他一岁。", "pinyin": "tā yí suì", "fr": "Il a un an." }]
+  },
+  {
+    "id": "w-0027",
+    "hanzi": "二",
+    "pinyin": "èr",
+    "fr": "deux",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "现在十二点。", "pinyin": "xiàn zài shí èr diǎn", "fr": "Il est midi." }
+    ]
+  },
+  {
+    "id": "w-0028",
+    "hanzi": "三",
+    "pinyin": "sān",
+    "fr": "trois",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      {
+        "hanzi": "我家有三个人。",
+        "pinyin": "wǒ jiā yǒu sān ge rén",
+        "fr": "Il y a trois personnes dans ma famille."
+      }
+    ]
+  },
+  {
+    "id": "w-0029",
+    "hanzi": "四",
+    "pinyin": "sì",
+    "fr": "quatre",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "现在四点。", "pinyin": "xiàn zài sì diǎn", "fr": "Il est quatre heures." }
+    ]
+  },
+  {
+    "id": "w-0030",
+    "hanzi": "五",
+    "pinyin": "wǔ",
+    "fr": "cinq",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "这个五块钱。", "pinyin": "zhè ge wǔ kuài qián", "fr": "Ça coûte cinq yuans." }
+    ]
+  },
+  {
+    "id": "w-0031",
+    "hanzi": "六",
+    "pinyin": "liù",
+    "fr": "six",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "六月很热。", "pinyin": "liù yuè hěn rè", "fr": "Il fait chaud en juin." }
+    ]
+  },
+  {
+    "id": "w-0032",
+    "hanzi": "七",
+    "pinyin": "qī",
+    "fr": "sept",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      {
+        "hanzi": "一个星期有七天。",
+        "pinyin": "yí ge xīng qī yǒu qī tiān",
+        "fr": "Une semaine a sept jours."
+      }
+    ]
+  },
+  {
+    "id": "w-0033",
+    "hanzi": "八",
+    "pinyin": "bā",
+    "fr": "huit",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "现在八点。", "pinyin": "xiàn zài bā diǎn", "fr": "Il est huit heures." }
+    ]
+  },
+  {
+    "id": "w-0034",
+    "hanzi": "九",
+    "pinyin": "jiǔ",
+    "fr": "neuf",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "他儿子九岁。", "pinyin": "tā ér zi jiǔ suì", "fr": "Son fils a neuf ans." }
+    ]
+  },
+  {
+    "id": "w-0035",
+    "hanzi": "十",
+    "pinyin": "shí",
+    "fr": "dix",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      {
+        "hanzi": "我买了十个苹果。",
+        "pinyin": "wǒ mǎi le shí ge píng guǒ",
+        "fr": "J'ai acheté dix pommes."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0036",
+    "hanzi": "个",
+    "pinyin": "gè",
+    "fr": "classificateur général",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur"],
+    "exemples": [
+      {
+        "hanzi": "我有三个中国朋友。",
+        "pinyin": "wǒ yǒu sān ge Zhōng guó péng you",
+        "fr": "J'ai trois amis chinois."
+      }
+    ]
+  },
+  {
+    "id": "w-0037",
+    "hanzi": "些",
+    "pinyin": "xiē",
+    "fr": "quelques, des",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur"],
+    "exemples": [
+      {
+        "hanzi": "这些书是我的。",
+        "pinyin": "zhè xiē shū shì wǒ de",
+        "fr": "Ces livres sont à moi."
+      }
+    ]
+  },
+  {
+    "id": "w-0038",
+    "hanzi": "本",
+    "pinyin": "běn",
+    "fr": "classificateur (livres)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur", "objets"],
+    "exemples": [
+      { "hanzi": "我买了一本书。", "pinyin": "wǒ mǎi le yì běn shū", "fr": "J'ai acheté un livre." }
+    ]
+  },
+  {
+    "id": "w-0039",
+    "hanzi": "岁",
+    "pinyin": "suì",
+    "fr": "an(s) (âge)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur", "temps"],
+    "exemples": [
+      { "hanzi": "我女儿三岁。", "pinyin": "wǒ nǚ ér sān suì", "fr": "Ma fille a trois ans." }
+    ]
+  },
+  {
+    "id": "w-0040",
+    "hanzi": "块",
+    "pinyin": "kuài",
+    "fr": "yuan (monnaie) ; morceau",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "这个茶杯十块钱。",
+        "pinyin": "zhè ge chá bēi shí kuài qián",
+        "fr": "Cette tasse coûte dix yuans."
+      }
+    ]
+  },
+  {
+    "id": "w-0041",
+    "hanzi": "点",
+    "pinyin": "diǎn",
+    "fr": "heure (o'clock) ; un peu ; point",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "classificateur",
+    "themes": ["classificateur", "temps"],
+    "exemples": [
+      { "hanzi": "现在几点？", "pinyin": "xiàn zài jǐ diǎn", "fr": "Quelle heure est-il ?" }
+    ]
+  },
+  {
+    "id": "w-0042",
+    "hanzi": "一点儿",
+    "pinyin": "yì diǎnr",
+    "fr": "un peu",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我会说一点儿汉语。",
+        "pinyin": "wǒ huì shuō yì diǎnr Hàn yǔ",
+        "fr": "Je parle un peu chinois."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0043",
+    "hanzi": "现在",
+    "pinyin": "xiàn zài",
+    "fr": "maintenant",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      { "hanzi": "现在是三点。", "pinyin": "xiàn zài shì sān diǎn", "fr": "Il est trois heures." }
+    ]
+  },
+  {
+    "id": "w-0044",
+    "hanzi": "今天",
+    "pinyin": "jīn tiān",
+    "fr": "aujourd'hui",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "今天星期一。",
+        "pinyin": "jīn tiān xīng qī yī",
+        "fr": "Aujourd'hui, c'est lundi."
+      }
+    ]
+  },
+  {
+    "id": "w-0045",
+    "hanzi": "明天",
+    "pinyin": "míng tiān",
+    "fr": "demain",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [{ "hanzi": "明天见！", "pinyin": "míng tiān jiàn", "fr": "À demain !" }]
+  },
+  {
+    "id": "w-0046",
+    "hanzi": "昨天",
+    "pinyin": "zuó tiān",
+    "fr": "hier",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "昨天我没去学校。",
+        "pinyin": "zuó tiān wǒ méi qù xué xiào",
+        "fr": "Hier, je ne suis pas allé à l'école."
+      }
+    ]
+  },
+  {
+    "id": "w-0047",
+    "hanzi": "上午",
+    "pinyin": "shàng wǔ",
+    "fr": "matin (matinée)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "上午我有工作。",
+        "pinyin": "shàng wǔ wǒ yǒu gōng zuò",
+        "fr": "J'ai du travail le matin."
+      }
+    ]
+  },
+  {
+    "id": "w-0048",
+    "hanzi": "中午",
+    "pinyin": "zhōng wǔ",
+    "fr": "midi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "中午我们吃米饭。",
+        "pinyin": "zhōng wǔ wǒ men chī mǐ fàn",
+        "fr": "À midi, nous mangeons du riz."
+      }
+    ]
+  },
+  {
+    "id": "w-0049",
+    "hanzi": "下午",
+    "pinyin": "xià wǔ",
+    "fr": "après-midi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "下午我去买东西。",
+        "pinyin": "xià wǔ wǒ qù mǎi dōng xi",
+        "fr": "Cet après-midi, je vais faire des courses."
+      }
+    ]
+  },
+  {
+    "id": "w-0050",
+    "hanzi": "年",
+    "pinyin": "nián",
+    "fr": "année",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "一年有十二个月。",
+        "pinyin": "yì nián yǒu shí èr ge yuè",
+        "fr": "Une année a douze mois."
+      }
+    ]
+  },
+  {
+    "id": "w-0051",
+    "hanzi": "月",
+    "pinyin": "yuè",
+    "fr": "mois ; lune",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "我八月去中国。",
+        "pinyin": "wǒ bā yuè qù Zhōng guó",
+        "fr": "Je vais en Chine en août."
+      }
+    ]
+  },
+  {
+    "id": "w-0052",
+    "hanzi": "日",
+    "pinyin": "rì",
+    "fr": "jour ; date",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "今天是五月一日。",
+        "pinyin": "jīn tiān shì wǔ yuè yī rì",
+        "fr": "Aujourd'hui, c'est le 1er mai."
+      }
+    ]
+  },
+  {
+    "id": "w-0053",
+    "hanzi": "号",
+    "pinyin": "hào",
+    "fr": "numéro ; date (du mois)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      { "hanzi": "今天几号？", "pinyin": "jīn tiān jǐ hào", "fr": "Le combien sommes-nous ?" }
+    ]
+  },
+  {
+    "id": "w-0054",
+    "hanzi": "星期",
+    "pinyin": "xīng qī",
+    "fr": "semaine",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "今天星期几？",
+        "pinyin": "jīn tiān xīng qī jǐ",
+        "fr": "Quel jour de la semaine sommes-nous ?"
+      }
+    ]
+  },
+  {
+    "id": "w-0055",
+    "hanzi": "分钟",
+    "pinyin": "fēn zhōng",
+    "fr": "minute",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps"],
+    "exemples": [
+      {
+        "hanzi": "他睡了二十分钟。",
+        "pinyin": "tā shuì le èr shí fēn zhōng",
+        "fr": "Il a dormi vingt minutes."
+      }
+    ]
+  },
+  {
+    "id": "w-0056",
+    "hanzi": "时候",
+    "pinyin": "shí hou",
+    "fr": "moment ; quand",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["temps", "question"],
+    "exemples": [
+      { "hanzi": "你什么时候来？", "pinyin": "nǐ shén me shí hou lái", "fr": "Quand viens-tu ?" }
+    ]
+  },
+
+  {
+    "id": "w-0057",
+    "hanzi": "人",
+    "pinyin": "rén",
+    "fr": "personne, gens",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      { "hanzi": "他是中国人。", "pinyin": "tā shì Zhōng guó rén", "fr": "Il est chinois." }
+    ]
+  },
+  {
+    "id": "w-0058",
+    "hanzi": "家",
+    "pinyin": "jiā",
+    "fr": "maison ; famille",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "lieux"],
+    "exemples": [
+      {
+        "hanzi": "我家有五个人。",
+        "pinyin": "wǒ jiā yǒu wǔ ge rén",
+        "fr": "Ma famille compte cinq personnes."
+      }
+    ]
+  },
+  {
+    "id": "w-0059",
+    "hanzi": "爸爸",
+    "pinyin": "bà ba",
+    "fr": "papa",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      {
+        "hanzi": "我爸爸是医生。",
+        "pinyin": "wǒ bà ba shì yī shēng",
+        "fr": "Mon père est médecin."
+      }
+    ]
+  },
+  {
+    "id": "w-0060",
+    "hanzi": "妈妈",
+    "pinyin": "mā ma",
+    "fr": "maman",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      { "hanzi": "我妈妈在家。", "pinyin": "wǒ mā ma zài jiā", "fr": "Ma mère est à la maison." }
+    ]
+  },
+  {
+    "id": "w-0061",
+    "hanzi": "儿子",
+    "pinyin": "ér zi",
+    "fr": "fils",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      { "hanzi": "他有一个儿子。", "pinyin": "tā yǒu yí ge ér zi", "fr": "Il a un fils." }
+    ]
+  },
+  {
+    "id": "w-0062",
+    "hanzi": "女儿",
+    "pinyin": "nǚ ér",
+    "fr": "fille (enfant)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      { "hanzi": "我的女儿五岁。", "pinyin": "wǒ de nǚ ér wǔ suì", "fr": "Ma fille a cinq ans." }
+    ]
+  },
+  {
+    "id": "w-0063",
+    "hanzi": "老师",
+    "pinyin": "lǎo shī",
+    "fr": "professeur, enseignant",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "école"],
+    "exemples": [
+      {
+        "hanzi": "王老师是中国人。",
+        "pinyin": "Wáng lǎo shī shì Zhōng guó rén",
+        "fr": "Le professeur Wang est chinois."
+      }
+    ]
+  },
+  {
+    "id": "w-0064",
+    "hanzi": "学生",
+    "pinyin": "xué sheng",
+    "fr": "élève, étudiant",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "école"],
+    "exemples": [{ "hanzi": "我是学生。", "pinyin": "wǒ shì xué sheng", "fr": "Je suis étudiant." }]
+  },
+  {
+    "id": "w-0065",
+    "hanzi": "同学",
+    "pinyin": "tóng xué",
+    "fr": "camarade de classe",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "école"],
+    "exemples": [
+      {
+        "hanzi": "他是我的同学。",
+        "pinyin": "tā shì wǒ de tóng xué",
+        "fr": "C'est mon camarade de classe."
+      }
+    ]
+  },
+  {
+    "id": "w-0066",
+    "hanzi": "朋友",
+    "pinyin": "péng you",
+    "fr": "ami",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      {
+        "hanzi": "她是我的好朋友。",
+        "pinyin": "tā shì wǒ de hǎo péng you",
+        "fr": "C'est ma bonne amie."
+      }
+    ]
+  },
+  {
+    "id": "w-0067",
+    "hanzi": "医生",
+    "pinyin": "yī shēng",
+    "fr": "médecin",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes"],
+    "exemples": [
+      {
+        "hanzi": "我想做医生。",
+        "pinyin": "wǒ xiǎng zuò yī shēng",
+        "fr": "Je veux devenir médecin."
+      }
+    ]
+  },
+  {
+    "id": "w-0068",
+    "hanzi": "先生",
+    "pinyin": "xiān sheng",
+    "fr": "monsieur",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "politesse"],
+    "exemples": [
+      {
+        "hanzi": "王先生在吗？",
+        "pinyin": "Wáng xiān sheng zài ma",
+        "fr": "Monsieur Wang est-il là ?"
+      }
+    ]
+  },
+  {
+    "id": "w-0069",
+    "hanzi": "小姐",
+    "pinyin": "xiǎo jiě",
+    "fr": "mademoiselle",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "politesse"],
+    "exemples": [
+      {
+        "hanzi": "李小姐是老师。",
+        "pinyin": "Lǐ xiǎo jiě shì lǎo shī",
+        "fr": "Mademoiselle Li est enseignante."
+      }
+    ]
+  },
+  {
+    "id": "w-0070",
+    "hanzi": "名字",
+    "pinyin": "míng zi",
+    "fr": "nom, prénom",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["personnes", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "你叫什么名字？",
+        "pinyin": "nǐ jiào shén me míng zi",
+        "fr": "Comment t'appelles-tu ?"
+      }
+    ]
+  },
+
+  {
+    "id": "w-0071",
+    "hanzi": "中国",
+    "pinyin": "Zhōng guó",
+    "fr": "Chine",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom propre",
+    "themes": ["lieux"],
+    "exemples": [{ "hanzi": "我爱中国。", "pinyin": "wǒ ài Zhōng guó", "fr": "J'aime la Chine." }]
+  },
+  {
+    "id": "w-0072",
+    "hanzi": "北京",
+    "pinyin": "Běi jīng",
+    "fr": "Pékin",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom propre",
+    "themes": ["lieux"],
+    "exemples": [
+      { "hanzi": "我住在北京。", "pinyin": "wǒ zhù zài Běi jīng", "fr": "J'habite à Pékin." }
+    ]
+  },
+  {
+    "id": "w-0073",
+    "hanzi": "汉语",
+    "pinyin": "Hàn yǔ",
+    "fr": "chinois (langue)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["école", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我在学习汉语。",
+        "pinyin": "wǒ zài xué xí Hàn yǔ",
+        "fr": "J'apprends le chinois."
+      }
+    ]
+  },
+  {
+    "id": "w-0074",
+    "hanzi": "学校",
+    "pinyin": "xué xiào",
+    "fr": "école",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["lieux", "école"],
+    "exemples": [{ "hanzi": "我去学校。", "pinyin": "wǒ qù xué xiào", "fr": "Je vais à l'école." }]
+  },
+  {
+    "id": "w-0075",
+    "hanzi": "医院",
+    "pinyin": "yī yuàn",
+    "fr": "hôpital",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["lieux"],
+    "exemples": [
+      {
+        "hanzi": "医生在医院工作。",
+        "pinyin": "yī shēng zài yī yuàn gōng zuò",
+        "fr": "Le médecin travaille à l'hôpital."
+      }
+    ]
+  },
+  {
+    "id": "w-0076",
+    "hanzi": "商店",
+    "pinyin": "shāng diàn",
+    "fr": "magasin, boutique",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["lieux"],
+    "exemples": [
+      {
+        "hanzi": "我去商店买东西。",
+        "pinyin": "wǒ qù shāng diàn mǎi dōng xi",
+        "fr": "Je vais au magasin faire des courses."
+      }
+    ]
+  },
+  {
+    "id": "w-0077",
+    "hanzi": "饭馆",
+    "pinyin": "fàn guǎn",
+    "fr": "restaurant",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["lieux", "nourriture"],
+    "exemples": [
+      {
+        "hanzi": "我们去饭馆吃饭。",
+        "pinyin": "wǒ men qù fàn guǎn chī fàn",
+        "fr": "Nous allons manger au restaurant."
+      }
+    ]
+  },
+  {
+    "id": "w-0078",
+    "hanzi": "火车站",
+    "pinyin": "huǒ chē zhàn",
+    "fr": "gare (ferroviaire)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["lieux", "transport"],
+    "exemples": [
+      {
+        "hanzi": "火车站有很多人。",
+        "pinyin": "huǒ chē zhàn yǒu hěn duō rén",
+        "fr": "Il y a beaucoup de monde à la gare."
+      }
+    ]
+  },
+  {
+    "id": "w-0079",
+    "hanzi": "出租车",
+    "pinyin": "chū zū chē",
+    "fr": "taxi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["transport"],
+    "exemples": [
+      {
+        "hanzi": "我们坐出租车去。",
+        "pinyin": "wǒ men zuò chū zū chē qù",
+        "fr": "Nous y allons en taxi."
+      }
+    ]
+  },
+  {
+    "id": "w-0080",
+    "hanzi": "飞机",
+    "pinyin": "fēi jī",
+    "fr": "avion",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["transport"],
+    "exemples": [
+      {
+        "hanzi": "我明天坐飞机。",
+        "pinyin": "wǒ míng tiān zuò fēi jī",
+        "fr": "Je prends l'avion demain."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0081",
+    "hanzi": "电视",
+    "pinyin": "diàn shì",
+    "fr": "télévision",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "爸爸在看电视。",
+        "pinyin": "bà ba zài kàn diàn shì",
+        "fr": "Papa regarde la télé."
+      }
+    ]
+  },
+  {
+    "id": "w-0082",
+    "hanzi": "电脑",
+    "pinyin": "diàn nǎo",
+    "fr": "ordinateur",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我的电脑在家。",
+        "pinyin": "wǒ de diàn nǎo zài jiā",
+        "fr": "Mon ordinateur est à la maison."
+      }
+    ]
+  },
+  {
+    "id": "w-0083",
+    "hanzi": "电影",
+    "pinyin": "diàn yǐng",
+    "fr": "film",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我们去看电影吧。",
+        "pinyin": "wǒ men qù kàn diàn yǐng ba",
+        "fr": "Allons voir un film."
+      }
+    ]
+  },
+  {
+    "id": "w-0084",
+    "hanzi": "菜",
+    "pinyin": "cài",
+    "fr": "plat ; légume",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [
+      {
+        "hanzi": "这个菜很好吃。",
+        "pinyin": "zhè ge cài hěn hǎo chī",
+        "fr": "Ce plat est très bon."
+      }
+    ]
+  },
+  {
+    "id": "w-0085",
+    "hanzi": "米饭",
+    "pinyin": "mǐ fàn",
+    "fr": "riz (cuit)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [
+      { "hanzi": "我想吃米饭。", "pinyin": "wǒ xiǎng chī mǐ fàn", "fr": "Je veux manger du riz." }
+    ]
+  },
+  {
+    "id": "w-0086",
+    "hanzi": "水果",
+    "pinyin": "shuǐ guǒ",
+    "fr": "fruit",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [
+      {
+        "hanzi": "我喜欢吃水果。",
+        "pinyin": "wǒ xǐ huan chī shuǐ guǒ",
+        "fr": "J'aime manger des fruits."
+      }
+    ]
+  },
+  {
+    "id": "w-0087",
+    "hanzi": "苹果",
+    "pinyin": "píng guǒ",
+    "fr": "pomme",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [
+      {
+        "hanzi": "我买了三个苹果。",
+        "pinyin": "wǒ mǎi le sān ge píng guǒ",
+        "fr": "J'ai acheté trois pommes."
+      }
+    ]
+  },
+  {
+    "id": "w-0088",
+    "hanzi": "水",
+    "pinyin": "shuǐ",
+    "fr": "eau",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [
+      { "hanzi": "我想喝水。", "pinyin": "wǒ xiǎng hē shuǐ", "fr": "Je veux boire de l'eau." }
+    ]
+  },
+  {
+    "id": "w-0089",
+    "hanzi": "茶",
+    "pinyin": "chá",
+    "fr": "thé",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["nourriture"],
+    "exemples": [{ "hanzi": "你喝茶吗？", "pinyin": "nǐ hē chá ma", "fr": "Bois-tu du thé ?" }]
+  },
+  {
+    "id": "w-0090",
+    "hanzi": "杯子",
+    "pinyin": "bēi zi",
+    "fr": "verre, tasse",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets"],
+    "exemples": [
+      {
+        "hanzi": "桌子上有一个杯子。",
+        "pinyin": "zhuō zi shàng yǒu yí ge bēi zi",
+        "fr": "Il y a un verre sur la table."
+      }
+    ]
+  },
+  {
+    "id": "w-0091",
+    "hanzi": "钱",
+    "pinyin": "qián",
+    "fr": "argent",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["quotidien"],
+    "exemples": [
+      { "hanzi": "我没有钱。", "pinyin": "wǒ méi yǒu qián", "fr": "Je n'ai pas d'argent." }
+    ]
+  },
+  {
+    "id": "w-0092",
+    "hanzi": "书",
+    "pinyin": "shū",
+    "fr": "livre",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "école"],
+    "exemples": [
+      { "hanzi": "这本书很好。", "pinyin": "zhè běn shū hěn hǎo", "fr": "Ce livre est très bien." }
+    ]
+  },
+  {
+    "id": "w-0093",
+    "hanzi": "报纸",
+    "pinyin": "bào zhǐ",
+    "fr": "journal (presse)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "quotidien"],
+    "exemples": [
+      { "hanzi": "爸爸在看报纸。", "pinyin": "bà ba zài kàn bào zhǐ", "fr": "Papa lit le journal." }
+    ]
+  },
+  {
+    "id": "w-0094",
+    "hanzi": "字",
+    "pinyin": "zì",
+    "fr": "caractère (écrit)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["école"],
+    "exemples": [
+      {
+        "hanzi": "这个字怎么写？",
+        "pinyin": "zhè ge zì zěn me xiě",
+        "fr": "Comment s'écrit ce caractère ?"
+      }
+    ]
+  },
+  {
+    "id": "w-0095",
+    "hanzi": "桌子",
+    "pinyin": "zhuō zi",
+    "fr": "table",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets"],
+    "exemples": [
+      {
+        "hanzi": "书在桌子上。",
+        "pinyin": "shū zài zhuō zi shàng",
+        "fr": "Le livre est sur la table."
+      }
+    ]
+  },
+  {
+    "id": "w-0096",
+    "hanzi": "椅子",
+    "pinyin": "yǐ zi",
+    "fr": "chaise",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets"],
+    "exemples": [
+      { "hanzi": "那是我的椅子。", "pinyin": "nà shì wǒ de yǐ zi", "fr": "C'est ma chaise." }
+    ]
+  },
+  {
+    "id": "w-0097",
+    "hanzi": "衣服",
+    "pinyin": "yī fu",
+    "fr": "vêtements",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["objets", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我喜欢这个衣服。",
+        "pinyin": "wǒ xǐ huan zhè ge yī fu",
+        "fr": "J'aime ce vêtement."
+      }
+    ]
+  },
+  {
+    "id": "w-0098",
+    "hanzi": "东西",
+    "pinyin": "dōng xi",
+    "fr": "chose(s)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我要去买东西。",
+        "pinyin": "wǒ yào qù mǎi dōng xi",
+        "fr": "Je vais faire des courses."
+      }
+    ]
+  },
+  {
+    "id": "w-0099",
+    "hanzi": "猫",
+    "pinyin": "māo",
+    "fr": "chat",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我很喜欢猫。",
+        "pinyin": "wǒ hěn xǐ huan māo",
+        "fr": "J'aime beaucoup les chats."
+      }
+    ]
+  },
+  {
+    "id": "w-0100",
+    "hanzi": "狗",
+    "pinyin": "gǒu",
+    "fr": "chien",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["quotidien"],
+    "exemples": [
+      {
+        "hanzi": "狗是人的朋友。",
+        "pinyin": "gǒu shì rén de péng you",
+        "fr": "Le chien est l'ami de l'homme."
+      }
+    ]
+  },
+  {
+    "id": "w-0101",
+    "hanzi": "天气",
+    "pinyin": "tiān qì",
+    "fr": "temps (météo)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "nom",
+    "themes": ["météo"],
+    "exemples": [
+      {
+        "hanzi": "今天天气很好。",
+        "pinyin": "jīn tiān tiān qì hěn hǎo",
+        "fr": "Il fait beau aujourd'hui."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0102",
+    "hanzi": "上",
+    "pinyin": "shàng",
+    "fr": "sur, dessus ; monter",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "localisateur",
+    "themes": ["position"],
+    "exemples": [
+      {
+        "hanzi": "书在桌子上。",
+        "pinyin": "shū zài zhuō zi shàng",
+        "fr": "Le livre est sur la table."
+      }
+    ]
+  },
+  {
+    "id": "w-0103",
+    "hanzi": "下",
+    "pinyin": "xià",
+    "fr": "sous, dessous ; descendre",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "localisateur",
+    "themes": ["position"],
+    "exemples": [
+      {
+        "hanzi": "猫在椅子下。",
+        "pinyin": "māo zài yǐ zi xià",
+        "fr": "Le chat est sous la chaise."
+      }
+    ]
+  },
+  {
+    "id": "w-0104",
+    "hanzi": "里",
+    "pinyin": "lǐ",
+    "fr": "dans, à l'intérieur",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "localisateur",
+    "themes": ["position"],
+    "exemples": [
+      {
+        "hanzi": "家里有很多书。",
+        "pinyin": "jiā lǐ yǒu hěn duō shū",
+        "fr": "Il y a beaucoup de livres à la maison."
+      }
+    ]
+  },
+  {
+    "id": "w-0105",
+    "hanzi": "前面",
+    "pinyin": "qián miàn",
+    "fr": "devant",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "localisateur",
+    "themes": ["position"],
+    "exemples": [
+      {
+        "hanzi": "学校前面有商店。",
+        "pinyin": "xué xiào qián miàn yǒu shāng diàn",
+        "fr": "Il y a un magasin devant l'école."
+      }
+    ]
+  },
+  {
+    "id": "w-0106",
+    "hanzi": "后面",
+    "pinyin": "hòu miàn",
+    "fr": "derrière",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "localisateur",
+    "themes": ["position"],
+    "exemples": [
+      {
+        "hanzi": "我家后面有医院。",
+        "pinyin": "wǒ jiā hòu miàn yǒu yī yuàn",
+        "fr": "Il y a un hôpital derrière chez moi."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0107",
+    "hanzi": "是",
+    "pinyin": "shì",
+    "fr": "être",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["grammaire", "verbe-état"],
+    "exemples": [{ "hanzi": "我是老师。", "pinyin": "wǒ shì lǎo shī", "fr": "Je suis professeur." }]
+  },
+  {
+    "id": "w-0108",
+    "hanzi": "有",
+    "pinyin": "yǒu",
+    "fr": "avoir ; il y a",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["grammaire", "verbe-état"],
+    "exemples": [
+      { "hanzi": "我有三本书。", "pinyin": "wǒ yǒu sān běn shū", "fr": "J'ai trois livres." }
+    ]
+  },
+  {
+    "id": "w-0109",
+    "hanzi": "看",
+    "pinyin": "kàn",
+    "fr": "regarder ; lire",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [{ "hanzi": "我在看书。", "pinyin": "wǒ zài kàn shū", "fr": "Je lis un livre." }]
+  },
+  {
+    "id": "w-0110",
+    "hanzi": "听",
+    "pinyin": "tīng",
+    "fr": "écouter",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      {
+        "hanzi": "请听老师说。",
+        "pinyin": "qǐng tīng lǎo shī shuō",
+        "fr": "Écoutez ce que dit le professeur."
+      }
+    ]
+  },
+  {
+    "id": "w-0111",
+    "hanzi": "说话",
+    "pinyin": "shuō huà",
+    "fr": "parler",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      { "hanzi": "老师在说话。", "pinyin": "lǎo shī zài shuō huà", "fr": "Le professeur parle." }
+    ]
+  },
+  {
+    "id": "w-0112",
+    "hanzi": "读",
+    "pinyin": "dú",
+    "fr": "lire (à voix haute)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "école"],
+    "exemples": [
+      { "hanzi": "请读这个字。", "pinyin": "qǐng dú zhè ge zì", "fr": "Lis ce caractère." }
+    ]
+  },
+  {
+    "id": "w-0113",
+    "hanzi": "写",
+    "pinyin": "xiě",
+    "fr": "écrire",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "école"],
+    "exemples": [
+      { "hanzi": "我在写字。", "pinyin": "wǒ zài xiě zì", "fr": "J'écris des caractères." }
+    ]
+  },
+  {
+    "id": "w-0114",
+    "hanzi": "看见",
+    "pinyin": "kàn jiàn",
+    "fr": "voir, apercevoir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      {
+        "hanzi": "我看见老师了。",
+        "pinyin": "wǒ kàn jiàn lǎo shī le",
+        "fr": "J'ai vu le professeur."
+      }
+    ]
+  },
+  {
+    "id": "w-0115",
+    "hanzi": "叫",
+    "pinyin": "jiào",
+    "fr": "s'appeler ; appeler",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [
+      { "hanzi": "我叫李明。", "pinyin": "wǒ jiào Lǐ Míng", "fr": "Je m'appelle Li Ming." }
+    ]
+  },
+  {
+    "id": "w-0116",
+    "hanzi": "来",
+    "pinyin": "lái",
+    "fr": "venir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      { "hanzi": "请你来我家。", "pinyin": "qǐng nǐ lái wǒ jiā", "fr": "Viens chez moi." }
+    ]
+  },
+  {
+    "id": "w-0117",
+    "hanzi": "去",
+    "pinyin": "qù",
+    "fr": "aller",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [{ "hanzi": "我去学校。", "pinyin": "wǒ qù xué xiào", "fr": "Je vais à l'école." }]
+  },
+  {
+    "id": "w-0118",
+    "hanzi": "回",
+    "pinyin": "huí",
+    "fr": "rentrer, retourner",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      { "hanzi": "我六点回家。", "pinyin": "wǒ liù diǎn huí jiā", "fr": "Je rentre à six heures." }
+    ]
+  },
+  {
+    "id": "w-0119",
+    "hanzi": "吃",
+    "pinyin": "chī",
+    "fr": "manger",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "nourriture"],
+    "exemples": [
+      { "hanzi": "我想吃米饭。", "pinyin": "wǒ xiǎng chī mǐ fàn", "fr": "Je veux manger du riz." }
+    ]
+  },
+  {
+    "id": "w-0120",
+    "hanzi": "喝",
+    "pinyin": "hē",
+    "fr": "boire",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "nourriture"],
+    "exemples": [
+      { "hanzi": "你想喝什么？", "pinyin": "nǐ xiǎng hē shén me", "fr": "Que veux-tu boire ?" }
+    ]
+  },
+  {
+    "id": "w-0121",
+    "hanzi": "睡觉",
+    "pinyin": "shuì jiào",
+    "fr": "dormir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我十一点睡觉。",
+        "pinyin": "wǒ shí yī diǎn shuì jiào",
+        "fr": "Je me couche à onze heures."
+      }
+    ]
+  },
+  {
+    "id": "w-0122",
+    "hanzi": "打电话",
+    "pinyin": "dǎ diàn huà",
+    "fr": "téléphoner",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "expression",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [{ "hanzi": "他在打电话。", "pinyin": "tā zài dǎ diàn huà", "fr": "Il téléphone." }]
+  },
+  {
+    "id": "w-0123",
+    "hanzi": "做",
+    "pinyin": "zuò",
+    "fr": "faire",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [{ "hanzi": "你在做什么？", "pinyin": "nǐ zài zuò shén me", "fr": "Que fais-tu ?" }]
+  },
+  {
+    "id": "w-0124",
+    "hanzi": "买",
+    "pinyin": "mǎi",
+    "fr": "acheter",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我想买一本书。",
+        "pinyin": "wǒ xiǎng mǎi yì běn shū",
+        "fr": "Je veux acheter un livre."
+      }
+    ]
+  },
+  {
+    "id": "w-0125",
+    "hanzi": "开",
+    "pinyin": "kāi",
+    "fr": "ouvrir ; conduire ; allumer",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action"],
+    "exemples": [
+      {
+        "hanzi": "他会开出租车。",
+        "pinyin": "tā huì kāi chū zū chē",
+        "fr": "Il sait conduire un taxi."
+      }
+    ]
+  },
+  {
+    "id": "w-0126",
+    "hanzi": "坐",
+    "pinyin": "zuò",
+    "fr": "s'asseoir ; prendre (un transport)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "transport"],
+    "exemples": [
+      {
+        "hanzi": "我们坐飞机去。",
+        "pinyin": "wǒ men zuò fēi jī qù",
+        "fr": "Nous y allons en avion."
+      }
+    ]
+  },
+  {
+    "id": "w-0127",
+    "hanzi": "住",
+    "pinyin": "zhù",
+    "fr": "habiter",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [
+      { "hanzi": "我住在北京。", "pinyin": "wǒ zhù zài Běi jīng", "fr": "J'habite à Pékin." }
+    ]
+  },
+  {
+    "id": "w-0128",
+    "hanzi": "学习",
+    "pinyin": "xué xí",
+    "fr": "étudier, apprendre",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "école"],
+    "exemples": [
+      { "hanzi": "我喜欢学习。", "pinyin": "wǒ xǐ huan xué xí", "fr": "J'aime étudier." }
+    ]
+  },
+  {
+    "id": "w-0129",
+    "hanzi": "工作",
+    "pinyin": "gōng zuò",
+    "fr": "travailler ; travail",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "quotidien"],
+    "exemples": [
+      {
+        "hanzi": "我爸爸在医院工作。",
+        "pinyin": "wǒ bà ba zài yī yuàn gōng zuò",
+        "fr": "Mon père travaille à l'hôpital."
+      }
+    ]
+  },
+  {
+    "id": "w-0130",
+    "hanzi": "下雨",
+    "pinyin": "xià yǔ",
+    "fr": "pleuvoir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-action", "météo"],
+    "exemples": [
+      { "hanzi": "今天下雨了。", "pinyin": "jīn tiān xià yǔ le", "fr": "Il a plu aujourd'hui." }
+    ]
+  },
+  {
+    "id": "w-0131",
+    "hanzi": "爱",
+    "pinyin": "ài",
+    "fr": "aimer",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-état"],
+    "exemples": [{ "hanzi": "我爱你。", "pinyin": "wǒ ài nǐ", "fr": "Je t'aime." }]
+  },
+  {
+    "id": "w-0132",
+    "hanzi": "喜欢",
+    "pinyin": "xǐ huan",
+    "fr": "aimer bien, apprécier",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-état"],
+    "exemples": [
+      { "hanzi": "我喜欢喝茶。", "pinyin": "wǒ xǐ huan hē chá", "fr": "J'aime boire du thé." }
+    ]
+  },
+  {
+    "id": "w-0133",
+    "hanzi": "想",
+    "pinyin": "xiǎng",
+    "fr": "vouloir, avoir envie ; penser",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe modal",
+    "themes": ["verbe-état", "grammaire"],
+    "exemples": [
+      {
+        "hanzi": "我想去中国。",
+        "pinyin": "wǒ xiǎng qù Zhōng guó",
+        "fr": "Je veux aller en Chine."
+      }
+    ]
+  },
+  {
+    "id": "w-0134",
+    "hanzi": "认识",
+    "pinyin": "rèn shi",
+    "fr": "connaître (quelqu'un)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-état", "politesse"],
+    "exemples": [
+      {
+        "hanzi": "很高兴认识你。",
+        "pinyin": "hěn gāo xìng rèn shi nǐ",
+        "fr": "Ravi de te connaître."
+      }
+    ]
+  },
+  {
+    "id": "w-0135",
+    "hanzi": "会",
+    "pinyin": "huì",
+    "fr": "savoir (faire) ; pouvoir",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe modal",
+    "themes": ["grammaire", "verbe-état"],
+    "exemples": [
+      { "hanzi": "你会做菜吗？", "pinyin": "nǐ huì zuò cài ma", "fr": "Sais-tu cuisiner ?" }
+    ]
+  },
+  {
+    "id": "w-0136",
+    "hanzi": "能",
+    "pinyin": "néng",
+    "fr": "pouvoir (capacité, permission)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe modal",
+    "themes": ["grammaire", "verbe-état"],
+    "exemples": [
+      {
+        "hanzi": "我今天不能去。",
+        "pinyin": "wǒ jīn tiān bù néng qù",
+        "fr": "Je ne peux pas y aller aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "w-0137",
+    "hanzi": "觉得",
+    "pinyin": "jué de",
+    "fr": "trouver que, penser que",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "verbe",
+    "themes": ["verbe-état"],
+    "exemples": [
+      {
+        "hanzi": "我觉得这本书很好。",
+        "pinyin": "wǒ jué de zhè běn shū hěn hǎo",
+        "fr": "Je trouve ce livre très bien."
+      }
+    ]
+  },
+
+  {
+    "id": "w-0138",
+    "hanzi": "大",
+    "pinyin": "dà",
+    "fr": "grand",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      { "hanzi": "我的家很大。", "pinyin": "wǒ de jiā hěn dà", "fr": "Ma maison est grande." }
+    ]
+  },
+  {
+    "id": "w-0139",
+    "hanzi": "小",
+    "pinyin": "xiǎo",
+    "fr": "petit",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      { "hanzi": "这个杯子很小。", "pinyin": "zhè ge bēi zi hěn xiǎo", "fr": "Ce verre est petit." }
+    ]
+  },
+  {
+    "id": "w-0140",
+    "hanzi": "多",
+    "pinyin": "duō",
+    "fr": "nombreux, beaucoup",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      {
+        "hanzi": "商店里人很多。",
+        "pinyin": "shāng diàn lǐ rén hěn duō",
+        "fr": "Il y a beaucoup de monde dans le magasin."
+      }
+    ]
+  },
+  {
+    "id": "w-0141",
+    "hanzi": "少",
+    "pinyin": "shǎo",
+    "fr": "peu, peu nombreux",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      {
+        "hanzi": "今天学生很少。",
+        "pinyin": "jīn tiān xué sheng hěn shǎo",
+        "fr": "Il y a peu d'élèves aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "w-0142",
+    "hanzi": "冷",
+    "pinyin": "lěng",
+    "fr": "froid",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif", "météo"],
+    "exemples": [
+      { "hanzi": "今天很冷。", "pinyin": "jīn tiān hěn lěng", "fr": "Il fait froid aujourd'hui." }
+    ]
+  },
+  {
+    "id": "w-0143",
+    "hanzi": "热",
+    "pinyin": "rè",
+    "fr": "chaud",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif", "météo"],
+    "exemples": [
+      {
+        "hanzi": "今天天气很热。",
+        "pinyin": "jīn tiān tiān qì hěn rè",
+        "fr": "Il fait chaud aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "w-0144",
+    "hanzi": "好",
+    "pinyin": "hǎo",
+    "fr": "bon, bien",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      {
+        "hanzi": "这个老师很好。",
+        "pinyin": "zhè ge lǎo shī hěn hǎo",
+        "fr": "Ce professeur est très bien."
+      }
+    ]
+  },
+  {
+    "id": "w-0145",
+    "hanzi": "高兴",
+    "pinyin": "gāo xìng",
+    "fr": "content, joyeux",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif", "politesse"],
+    "exemples": [
+      {
+        "hanzi": "认识你我很高兴。",
+        "pinyin": "rèn shi nǐ wǒ hěn gāo xìng",
+        "fr": "Je suis content de te connaître."
+      }
+    ]
+  },
+  {
+    "id": "w-0146",
+    "hanzi": "漂亮",
+    "pinyin": "piào liang",
+    "fr": "joli, beau",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adjectif",
+    "themes": ["adjectif"],
+    "exemples": [
+      { "hanzi": "她很漂亮。", "pinyin": "tā hěn piào liang", "fr": "Elle est très jolie." }
+    ]
+  },
+
+  {
+    "id": "w-0147",
+    "hanzi": "不",
+    "pinyin": "bù",
+    "fr": "ne... pas",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      { "hanzi": "我不是老师。", "pinyin": "wǒ bú shì lǎo shī", "fr": "Je ne suis pas professeur." }
+    ]
+  },
+  {
+    "id": "w-0148",
+    "hanzi": "没",
+    "pinyin": "méi",
+    "fr": "ne... pas (avec 有 / passé)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      { "hanzi": "我没有钱。", "pinyin": "wǒ méi yǒu qián", "fr": "Je n'ai pas d'argent." }
+    ]
+  },
+  {
+    "id": "w-0149",
+    "hanzi": "很",
+    "pinyin": "hěn",
+    "fr": "très",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      {
+        "hanzi": "今天很热。",
+        "pinyin": "jīn tiān hěn rè",
+        "fr": "Il fait très chaud aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "w-0150",
+    "hanzi": "太",
+    "pinyin": "tài",
+    "fr": "trop",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      {
+        "hanzi": "今天太冷了。",
+        "pinyin": "jīn tiān tài lěng le",
+        "fr": "Il fait trop froid aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "w-0151",
+    "hanzi": "都",
+    "pinyin": "dōu",
+    "fr": "tous, tout",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      {
+        "hanzi": "我们都是学生。",
+        "pinyin": "wǒ men dōu shì xué sheng",
+        "fr": "Nous sommes tous étudiants."
+      }
+    ]
+  },
+  {
+    "id": "w-0152",
+    "hanzi": "也",
+    "pinyin": "yě",
+    "fr": "aussi",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "adverbe",
+    "themes": ["grammaire"],
+    "exemples": [
+      {
+        "hanzi": "我也喜欢喝茶。",
+        "pinyin": "wǒ yě xǐ huan hē chá",
+        "fr": "Moi aussi, j'aime boire du thé."
+      }
+    ]
+  },
+  {
+    "id": "w-0153",
+    "hanzi": "和",
+    "pinyin": "hé",
+    "fr": "et ; avec",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "conjonction",
+    "themes": ["grammaire"],
+    "exemples": [
+      {
+        "hanzi": "我和朋友去学校。",
+        "pinyin": "wǒ hé péng you qù xué xiào",
+        "fr": "Je vais à l'école avec un ami."
+      }
+    ]
+  },
+  {
+    "id": "w-0154",
+    "hanzi": "在",
+    "pinyin": "zài",
+    "fr": "à, dans ; être (quelque part) ; en train de",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "préposition",
+    "themes": ["grammaire", "position"],
+    "exemples": [{ "hanzi": "我在家。", "pinyin": "wǒ zài jiā", "fr": "Je suis à la maison." }]
+  },
+
+  {
+    "id": "w-0155",
+    "hanzi": "的",
+    "pinyin": "de",
+    "fr": "particule de détermination / possession",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "particule",
+    "themes": ["grammaire"],
+    "exemples": [
+      { "hanzi": "这是我的书。", "pinyin": "zhè shì wǒ de shū", "fr": "C'est mon livre." }
+    ]
+  },
+  {
+    "id": "w-0156",
+    "hanzi": "了",
+    "pinyin": "le",
+    "fr": "particule d'aspect (accompli / changement)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "particule",
+    "themes": ["grammaire"],
+    "exemples": [{ "hanzi": "我吃了。", "pinyin": "wǒ chī le", "fr": "J'ai mangé." }]
+  },
+  {
+    "id": "w-0157",
+    "hanzi": "吗",
+    "pinyin": "ma",
+    "fr": "particule interrogative",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "particule",
+    "themes": ["grammaire", "question"],
+    "exemples": [
+      { "hanzi": "你是学生吗？", "pinyin": "nǐ shì xué sheng ma", "fr": "Es-tu étudiant ?" }
+    ]
+  },
+  {
+    "id": "w-0158",
+    "hanzi": "呢",
+    "pinyin": "ne",
+    "fr": "particule (et... ? ; en train de)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "particule",
+    "themes": ["grammaire", "question"],
+    "exemples": [
+      { "hanzi": "我很好，你呢？", "pinyin": "wǒ hěn hǎo, nǐ ne", "fr": "Je vais bien, et toi ?" }
+    ]
+  },
+
+  {
+    "id": "w-0159",
+    "hanzi": "两",
+    "pinyin": "liǎng",
+    "fr": "deux (devant un classificateur)",
+    "niveauHsk": 1,
+    "categorieGrammaticale": "numéral",
+    "themes": ["nombre"],
+    "exemples": [
+      { "hanzi": "我有两个朋友。", "pinyin": "wǒ yǒu liǎng ge péng you", "fr": "J'ai deux amis." }
+    ]
+  }
+]

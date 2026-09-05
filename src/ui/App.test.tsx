@@ -12,4 +12,9 @@ describe('App', () => {
     expect(screen.getByText(/nǐ hǎo/)).toBeInTheDocument()
     expect(screen.getByText(/你好/)).toHaveAttribute('lang', 'zh-CN')
   })
+
+  it('charge et affiche le contenu HSK 1', () => {
+    render(<App />)
+    expect(screen.getByText(/mots/)).toHaveTextContent(/\d+ mots/)
+  })
 })

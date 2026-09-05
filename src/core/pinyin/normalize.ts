@@ -125,14 +125,16 @@ function assertPlainBase(base: string, token: string): void {
 export function splitSyllables(input: string): string[] {
   const raw = canonicalizeRaw(input)
   if (raw === '') return []
+  // séparateurs : espaces, apostrophes, tirets, et ponctuation courante des phrases
+  const SEP = /[\s'’,，.。;；:：、!！?？·-]+/
   if (/\d/.test(raw)) {
-    // mode chiffres : coupe sur les espaces/apostrophes et après chaque chiffre
+    // mode chiffres : coupe aussi après chaque chiffre de ton
     return raw
-      .split(/(?<=\d)|[\s'’-]+/)
+      .split(new RegExp(`(?<=\\d)|${SEP.source}`))
       .map((s) => s.trim())
       .filter((s) => s !== '')
   }
-  return raw.split(/[\s'’-]+/).filter((s) => s !== '')
+  return raw.split(SEP).filter((s) => s !== '')
 }
 
 export interface ParsedPinyin {

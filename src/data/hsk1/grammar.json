@@ -1,0 +1,238 @@
+[
+  {
+    "id": "g-001",
+    "titre": "La phrase avec 是 (A 是 B)",
+    "explicationFr": "是 (shì) relie deux groupes nominaux : « A est B ». Il ne s'emploie pas devant un adjectif seul (voir 很 + adjectif). La négation est 不是.",
+    "structure": "Sujet + 是 + Nom (+ 吗 ?)",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我是学生。", "pinyin": "wǒ shì xué sheng", "fr": "Je suis étudiant." },
+      { "hanzi": "他不是老师。", "pinyin": "tā bú shì lǎo shī", "fr": "Il n'est pas professeur." },
+      { "hanzi": "你是中国人吗？", "pinyin": "nǐ shì Zhōng guó rén ma", "fr": "Es-tu chinois ?" }
+    ]
+  },
+  {
+    "id": "g-002",
+    "titre": "La particule 的 (détermination et possession)",
+    "explicationFr": "的 (de) se place entre le déterminant et le nom : possesseur + 的 + objet, ou proposition + 的 + nom. Avec les liens proches (famille), 的 est souvent omis : 我妈妈.",
+    "structure": "Déterminant + 的 + Nom",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "这是我的书。", "pinyin": "zhè shì wǒ de shū", "fr": "C'est mon livre." },
+      {
+        "hanzi": "那是老师的电脑。",
+        "pinyin": "nà shì lǎo shī de diàn nǎo",
+        "fr": "C'est l'ordinateur du professeur."
+      },
+      { "hanzi": "他是我朋友。", "pinyin": "tā shì wǒ péng you", "fr": "C'est mon ami." }
+    ]
+  },
+  {
+    "id": "g-003",
+    "titre": "La question totale avec 吗",
+    "explicationFr": "Pour poser une question à laquelle on répond par oui ou non, on ajoute 吗 (ma) à la fin d'une phrase affirmative. L'ordre des mots ne change pas.",
+    "structure": "Phrase affirmative + 吗 ?",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "你好吗？", "pinyin": "nǐ hǎo ma", "fr": "Comment vas-tu ?" },
+      { "hanzi": "他是医生吗？", "pinyin": "tā shì yī shēng ma", "fr": "Est-il médecin ?" },
+      { "hanzi": "你喝茶吗？", "pinyin": "nǐ hē chá ma", "fr": "Bois-tu du thé ?" }
+    ]
+  },
+  {
+    "id": "g-004",
+    "titre": "La question par mot interrogatif",
+    "explicationFr": "Avec 什么, 谁, 哪儿, 几, 多少, 怎么…, le mot interrogatif prend la place du mot inconnu, sans inversion et sans 吗. La structure de la phrase reste identique à la réponse.",
+    "structure": "Sujet + Verbe + mot interrogatif ?",
+    "niveauHsk": 1,
+    "exemples": [
+      {
+        "hanzi": "你叫什么名字？",
+        "pinyin": "nǐ jiào shén me míng zi",
+        "fr": "Comment t'appelles-tu ?"
+      },
+      { "hanzi": "他去哪儿？", "pinyin": "tā qù nǎr", "fr": "Où va-t-il ?" },
+      { "hanzi": "现在几点？", "pinyin": "xiàn zài jǐ diǎn", "fr": "Quelle heure est-il ?" }
+    ]
+  },
+  {
+    "id": "g-005",
+    "titre": "La négation : 不 et 没(有)",
+    "explicationFr": "不 (bù) nie le présent, l'habitude, la volonté et tous les verbes sauf 有. 没(有) (méi yǒu) nie l'existence, la possession (没有) et une action passée (没 + verbe = « ne pas avoir fait »).",
+    "structure": "不 / 没 + Verbe",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我不喝茶。", "pinyin": "wǒ bù hē chá", "fr": "Je ne bois pas de thé." },
+      { "hanzi": "我没有钱。", "pinyin": "wǒ méi yǒu qián", "fr": "Je n'ai pas d'argent." },
+      {
+        "hanzi": "昨天我没去学校。",
+        "pinyin": "zuó tiān wǒ méi qù xué xiào",
+        "fr": "Hier, je ne suis pas allé à l'école."
+      }
+    ]
+  },
+  {
+    "id": "g-006",
+    "titre": "Le prédicat adjectival : 很 + adjectif",
+    "explicationFr": "Un adjectif se suffit à lui-même comme prédicat, sans 是. On place presque toujours un adverbe de degré devant : 很 (hěn), ici peu chargé de sens (« assez »). La négation est 不 + adjectif.",
+    "structure": "Sujet + 很 + Adjectif",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "今天很热。", "pinyin": "jīn tiān hěn rè", "fr": "Il fait chaud aujourd'hui." },
+      { "hanzi": "这本书不大。", "pinyin": "zhè běn shū bú dà", "fr": "Ce livre n'est pas grand." },
+      { "hanzi": "她很漂亮。", "pinyin": "tā hěn piào liang", "fr": "Elle est très jolie." }
+    ]
+  },
+  {
+    "id": "g-007",
+    "titre": "有 : possession et existence",
+    "explicationFr": "有 (yǒu) exprime la possession (« avoir ») ou l'existence (« il y a »). Sa négation est toujours 没有, jamais 不有. Pour l'existence, la structure est Lieu + 有 + Nom.",
+    "structure": "Sujet / Lieu + 有 / 没有 + Nom",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我有三本书。", "pinyin": "wǒ yǒu sān běn shū", "fr": "J'ai trois livres." },
+      {
+        "hanzi": "桌子上有一个杯子。",
+        "pinyin": "zhuō zi shàng yǒu yí ge bēi zi",
+        "fr": "Il y a un verre sur la table."
+      },
+      {
+        "hanzi": "我家没有猫。",
+        "pinyin": "wǒ jiā méi yǒu māo",
+        "fr": "Il n'y a pas de chat chez moi."
+      }
+    ]
+  },
+  {
+    "id": "g-008",
+    "titre": "Nombre + classificateur + nom",
+    "explicationFr": "En chinois, un nom compté est toujours précédé d'un classificateur : Nombre + Classificateur + Nom. Le classificateur général est 个 (ge). 一 se prononce yí devant un classificateur au 4e ton, yì devant les autres tons.",
+    "structure": "Nombre + Classificateur + Nom",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "三个人", "pinyin": "sān ge rén", "fr": "trois personnes" },
+      {
+        "hanzi": "我买了一本书。",
+        "pinyin": "wǒ mǎi le yì běn shū",
+        "fr": "J'ai acheté un livre."
+      },
+      {
+        "hanzi": "我有两个中国朋友。",
+        "pinyin": "wǒ yǒu liǎng ge Zhōng guó péng you",
+        "fr": "J'ai deux amis chinois."
+      }
+    ]
+  },
+  {
+    "id": "g-009",
+    "titre": "La question alternative « verbe-négation-verbe »",
+    "explicationFr": "Autre façon de poser une question fermée : on juxtapose la forme affirmative et la forme négative du verbe (ou de l'adjectif). Équivaut à la question en 吗, un peu plus directe.",
+    "structure": "Sujet + Verbe + 不 + Verbe ?",
+    "niveauHsk": 1,
+    "exemples": [
+      {
+        "hanzi": "你是不是学生？",
+        "pinyin": "nǐ shì bu shì xué sheng",
+        "fr": "Es-tu étudiant ou non ?"
+      },
+      { "hanzi": "你去不去？", "pinyin": "nǐ qù bu qù", "fr": "Y vas-tu ou non ?" },
+      {
+        "hanzi": "今天热不热？",
+        "pinyin": "jīn tiān rè bu rè",
+        "fr": "Fait-il chaud aujourd'hui ?"
+      }
+    ]
+  },
+  {
+    "id": "g-010",
+    "titre": "Les verbes modaux 想, 会, 能",
+    "explicationFr": "想 (xiǎng) = avoir envie de, vouloir. 会 (huì) = savoir faire (compétence apprise). 能 (néng) = être capable de / avoir la permission de. Ils se placent devant le verbe principal ; négation avec 不.",
+    "structure": "Sujet + 想 / 会 / 能 + Verbe",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我想喝水。", "pinyin": "wǒ xiǎng hē shuǐ", "fr": "Je veux boire de l'eau." },
+      { "hanzi": "我会说汉语。", "pinyin": "wǒ huì shuō Hàn yǔ", "fr": "Je sais parler chinois." },
+      {
+        "hanzi": "我今天不能去。",
+        "pinyin": "wǒ jīn tiān bù néng qù",
+        "fr": "Je ne peux pas y aller aujourd'hui."
+      }
+    ]
+  },
+  {
+    "id": "g-011",
+    "titre": "了 d'accompli en fin de phrase",
+    "explicationFr": "了 (le) placé en fin de phrase signale qu'un fait est survenu ou qu'une situation a changé. La négation d'une action non réalisée se fait avec 没 et sans 了 : 我没吃.",
+    "structure": "Sujet + Verbe (+ Objet) + 了",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我吃了。", "pinyin": "wǒ chī le", "fr": "J'ai mangé." },
+      {
+        "hanzi": "今天下雨了。",
+        "pinyin": "jīn tiān xià yǔ le",
+        "fr": "Il s'est mis à pleuvoir aujourd'hui."
+      },
+      {
+        "hanzi": "他买了三个苹果。",
+        "pinyin": "tā mǎi le sān ge píng guǒ",
+        "fr": "Il a acheté trois pommes."
+      }
+    ]
+  },
+  {
+    "id": "g-012",
+    "titre": "在 : lieu et action en cours",
+    "explicationFr": "在 (zài) comme verbe : Sujet + 在 + Lieu (« se trouver à »). Comme préposition : Sujet + 在 + Lieu + Verbe. Comme adverbe devant le verbe : 在 + Verbe = action en train de se dérouler.",
+    "structure": "Sujet + 在 + Lieu (+ Verbe)",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我在家。", "pinyin": "wǒ zài jiā", "fr": "Je suis à la maison." },
+      {
+        "hanzi": "他在医院工作。",
+        "pinyin": "tā zài yī yuàn gōng zuò",
+        "fr": "Il travaille à l'hôpital."
+      },
+      {
+        "hanzi": "爸爸在看电视。",
+        "pinyin": "bà ba zài kàn diàn shì",
+        "fr": "Papa est en train de regarder la télé."
+      }
+    ]
+  },
+  {
+    "id": "g-013",
+    "titre": "L'ordre des compléments : temps et lieu avant le verbe",
+    "explicationFr": "En chinois, le complément de temps et le complément de lieu se placent avant le verbe, dans l'ordre : Sujet + Temps + Lieu + Verbe. Le temps peut aussi passer en tête de phrase.",
+    "structure": "Sujet + Temps + (在 +) Lieu + Verbe",
+    "niveauHsk": 1,
+    "exemples": [
+      {
+        "hanzi": "我明天去北京。",
+        "pinyin": "wǒ míng tiān qù Běi jīng",
+        "fr": "Je vais à Pékin demain."
+      },
+      {
+        "hanzi": "他上午在家学习。",
+        "pinyin": "tā shàng wǔ zài jiā xué xí",
+        "fr": "Il étudie à la maison le matin."
+      },
+      { "hanzi": "你什么时候来？", "pinyin": "nǐ shén me shí hou lái", "fr": "Quand viens-tu ?" }
+    ]
+  },
+  {
+    "id": "g-014",
+    "titre": "La question elliptique avec 呢",
+    "explicationFr": "呢 (ne) après un nom ou un pronom pose une question dont le verbe est sous-entendu, repris du contexte : « et… ? ». Sert aussi à demander où se trouve quelque chose : 我的书呢？",
+    "structure": "Nom / Pronom + 呢 ?",
+    "niveauHsk": 1,
+    "exemples": [
+      { "hanzi": "我很好，你呢？", "pinyin": "wǒ hěn hǎo, nǐ ne", "fr": "Je vais bien, et toi ?" },
+      { "hanzi": "我的书呢？", "pinyin": "wǒ de shū ne", "fr": "Où est mon livre ?" },
+      {
+        "hanzi": "他去学校，你呢？",
+        "pinyin": "tā qù xué xiào, nǐ ne",
+        "fr": "Il va à l'école, et toi ?"
+      }
+    ]
+  }
+]

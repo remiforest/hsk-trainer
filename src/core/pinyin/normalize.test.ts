@@ -54,6 +54,12 @@ describe('splitSyllables', () => {
     expect(splitSyllables("xi'an")).toEqual(['xi', 'an'])
     expect(splitSyllables('  ')).toEqual([])
   })
+
+  it('tolère la ponctuation des phrases d’exemple', () => {
+    expect(splitSyllables('lǎo shī, zài jiàn')).toEqual(['lǎo', 'shī', 'zài', 'jiàn'])
+    expect(splitSyllables('wǒ hěn hǎo, nǐ ne')).toEqual(['wǒ', 'hěn', 'hǎo', 'nǐ', 'ne'])
+    expect(splitSyllables('wéi, nǐ hǎo!')).toEqual(['wéi', 'nǐ', 'hǎo'])
+  })
 })
 
 describe('normalizePinyin', () => {
