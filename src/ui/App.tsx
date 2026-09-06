@@ -3,6 +3,7 @@ import { getCatalog } from '../data'
 import { useBootstrap, type BootConfig } from './useBootstrap'
 import { ErrorScreen } from './screens/ErrorScreen'
 import { HomeScreen } from './screens/HomeScreen'
+import { LessonScreen } from './screens/LessonScreen'
 import { LoadingScreen } from './screens/LoadingScreen'
 import { RecoveryScreen } from './screens/RecoveryScreen'
 import { SessionScreen } from './screens/SessionScreen'
@@ -12,7 +13,7 @@ export interface AppProps {
   bootConfig?: BootConfig
 }
 
-type Screen = 'home' | 'session'
+type Screen = 'home' | 'session' | 'lesson'
 
 export function App({ bootConfig }: AppProps = {}): JSX.Element {
   // Horloge figée au montage : une session dure quelques minutes, inutile de la
@@ -55,12 +56,24 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
       />
     )
   }
+  if (screen === 'lesson') {
+    return (
+      <LessonScreen
+        db={state.db}
+        catalog={getCatalog()}
+        now={now}
+        onDone={() => setScreen('home')}
+      />
+    )
+  }
   return (
     <HomeScreen
       db={state.db}
+      catalog={getCatalog()}
       now={now}
       {...(timeZone !== undefined ? { timeZone } : {})}
       onStartSession={() => setScreen('session')}
+      onStartLesson={() => setScreen('lesson')}
     />
   )
 }

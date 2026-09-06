@@ -60,4 +60,15 @@ describe('App', () => {
     await userEvent.click(await screen.findByRole('button', { name: /Retour à l’accueil/ }))
     expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
   })
+
+  it('étudier une leçon crée des cartes à réviser', async () => {
+    render(<App bootConfig={config('app-lesson')} />)
+
+    // base vierge : rien à réviser, mais une leçon à étudier
+    await userEvent.click(await screen.findByRole('button', { name: /Étudier la leçon/ }))
+    await userEvent.click(await screen.findByRole('button', { name: /J’ai étudié/ }))
+
+    // de retour à l'accueil, la session devient possible
+    expect(await screen.findByRole('button', { name: /Commencer la session/ })).toBeInTheDocument()
+  })
 })

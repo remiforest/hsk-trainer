@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { HskDatabase } from '../../db/db'
+import { getCatalog } from '../../data'
 import { makeCard } from '../../test/factories'
 import { persistAnswer } from '../../db/review-session'
 import { makeReviewOutcome } from '../../core/srs/scheduler'
@@ -67,7 +68,17 @@ describe('HomeScreen', () => {
     })
 
     const onStart = vi.fn()
-    render(<HomeScreen db={db} now={NOW} timeZone="UTC" onStartSession={onStart} />)
+    const onLesson = vi.fn()
+    render(
+      <HomeScreen
+        db={db}
+        catalog={getCatalog()}
+        now={NOW}
+        timeZone="UTC"
+        onStartSession={onStart}
+        onStartLesson={onLesson}
+      />,
+    )
 
     expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
     expect(screen.getByLabelText('Révisions aujourd’hui')).toHaveTextContent('1')
@@ -78,10 +89,37 @@ describe('HomeScreen', () => {
     expect(onStart).toHaveBeenCalledOnce()
   })
 
-  it('n’affiche pas de bouton quand il n’y a rien à réviser', async () => {
+  it('propose la prochaine leçon tant qu’il en reste', async () => {
+    const db = await freshDb('home-lesson')
+    const onLesson = vi.fn()
+    render(
+      <HomeScreen
+        db={db}
+        catalog={getCatalog()}
+        now={NOW}
+        timeZone="UTC"
+        onStartSession={vi.fn()}
+        onStartLesson={onLesson}
+      />,
+    )
+
+    await userEvent.click(await screen.findByRole('button', { name: /Étudier la leçon/ }))
+    expect(onLesson).toHaveBeenCalledOnce()
+  })
+
+  it('n’affiche pas de bouton de session quand il n’y a rien à réviser', async () => {
     const db = await freshDb('home-empty')
 
-    render(<HomeScreen db={db} now={NOW} timeZone="UTC" onStartSession={vi.fn()} />)
+    render(
+      <HomeScreen
+        db={db}
+        catalog={getCatalog()}
+        now={NOW}
+        timeZone="UTC"
+        onStartSession={vi.fn()}
+        onStartLesson={vi.fn()}
+      />,
+    )
 
     expect(await screen.findByText(/Rien à réviser/)).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: /Commencer/ })).not.toBeInTheDocument()

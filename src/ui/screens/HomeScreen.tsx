@@ -1,29 +1,41 @@
 /**
  * Écran d'accueil : point d'entrée quotidien. Résume la journée (série, révisions
- * déjà faites, temps passé) et ce qu'il reste à faire, puis lance la session.
+ * déjà faites, temps passé), propose la prochaine leçon à acquérir, puis lance
+ * la session de révision.
  */
 
 import { useEffect, useState, type JSX } from 'react'
 import { type HskDatabase } from '../../db/db'
 import { ensureProgress, ensureSettings } from '../../db/repositories/singletons'
-import { getDayPlan, getTodayStats, type TodayStats } from '../../db/review-session'
+import { getDayPlan, getTodayStats, nextLesson, type TodayStats } from '../../db/review-session'
 import { type DayQueue } from '../../core/srs/queue'
+import { type ContentCatalog, type Lesson } from '../../types/content'
 import { formatDuration, formatStreak } from '../format'
 
 export interface HomeScreenProps {
   db: HskDatabase
+  catalog: ContentCatalog
   now: number
   timeZone?: string
   onStartSession: () => void
+  onStartLesson: () => void
 }
 
 interface HomeData {
   plan: DayQueue
   stats: TodayStats
   streak: number
+  lesson: Lesson | null
 }
 
-export function HomeScreen({ db, now, timeZone, onStartSession }: HomeScreenProps): JSX.Element {
+export function HomeScreen({
+  db,
+  catalog,
+  now,
+  timeZone,
+  onStartSession,
+  onStartLesson,
+}: HomeScreenProps): JSX.Element {
   const [data, setData] = useState<HomeData | null>(null)
 
   useEffect(() => {
@@ -35,13 +47,18 @@ export function HomeScreen({ db, now, timeZone, onStartSession }: HomeScreenProp
         getTodayStats(db, now, timeZone),
       ])
       if (!cancelled) {
-        setData({ plan, stats, streak: progress.streakDays })
+        setData({
+          plan,
+          stats,
+          streak: progress.streakDays,
+          lesson: nextLesson([...catalog.lessons.values()], progress.completedLessonIds),
+        })
       }
     })()
     return () => {
       cancelled = true
     }
-  }, [db, now, timeZone])
+  }, [db, catalog, now, timeZone])
 
   if (data === null) {
     return (
@@ -70,6 +87,20 @@ export function HomeScreen({ db, now, timeZone, onStartSession }: HomeScreenProp
         <Stat label="À réviser" value={String(toReview)} />
         <Stat label="Nouvelles cartes" value={String(fresh)} />
       </section>
+
+      {data.lesson !== null && (
+        <section className="flex flex-col gap-2 rounded-lg border border-current/15 p-4">
+          <span className="text-xs opacity-60">Prochaine leçon · {data.lesson.ordre}</span>
+          <span className="font-medium">{data.lesson.titre}</span>
+          <button
+            type="button"
+            onClick={onStartLesson}
+            className="mt-1 rounded-lg border border-current/20 px-4 py-2 text-sm font-medium"
+          >
+            Étudier la leçon
+          </button>
+        </section>
+      )}
 
       <section className="mt-auto flex flex-col gap-3">
         {nothingToDo ? (
