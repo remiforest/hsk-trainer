@@ -1,5 +1,11 @@
 import { JournalBuilder, makeCard } from '../../test/factories'
-import { buildDayQueue, countNewIntroducedToday } from './queue'
+import { type Card } from '../../types/srs'
+import {
+  buildDayQueue,
+  buildExtraQueue,
+  countExtraReviewedToday,
+  countNewIntroducedToday,
+} from './queue'
 
 const DAY = 86_400_000
 const T0 = Date.UTC(2026, 1, 10, 8, 0, 0) // mardi
@@ -104,5 +110,76 @@ describe('buildDayQueue', () => {
     const cards = [makeCard({ itemId: 'w-1', state: 'review', due: T0 - 3 * DAY })]
     const q = buildDayQueue({ cards, events: [], settings, now: T0, timeZone: 'UTC' })
     expect(q.due).toHaveLength(1)
+  })
+})
+
+describe('buildExtraQueue', () => {
+  const extraSettings = { extraReviewsPerDay: 20 }
+
+  const mature = (id: string, over: Partial<Card> = {}): Card =>
+    makeCard({ itemId: id, state: 'review', reps: 4, stability: 10, difficulty: 5, ...over })
+
+  it('ne propose que des cartes mûres dont l’échéance est un jour ultérieur', () => {
+    const cards = [
+      mature('due-today', { due: T0 + 3_600_000 }), // due aujourd'hui -> file normale
+      mature('overdue', { due: T0 - DAY }), // en retard -> file normale
+      mature('ahead-2', { due: T0 + 2 * DAY }),
+      mature('ahead-1', { due: T0 + 1 * DAY }),
+      makeCard({ itemId: 'new', state: 'new' }),
+      makeCard({ itemId: 'learn', state: 'learning', due: T0 + 3 * DAY }),
+      mature('suspended', { due: T0 + 1 * DAY, suspended: true }),
+    ]
+    const q = buildExtraQueue({
+      cards,
+      events: [],
+      settings: extraSettings,
+      now: T0,
+      timeZone: 'UTC',
+    })
+    expect(q.cards.map((c) => c.itemId)).toEqual(['ahead-1', 'ahead-2'])
+    expect(q.counts.available).toBe(2)
+  })
+
+  it('plafonne selon extraReviewsPerDay', () => {
+    const cards = Array.from({ length: 10 }, (_, i) =>
+      mature(`m-${String(i).padStart(2, '0')}`, { due: T0 + (i + 1) * DAY }),
+    )
+    const q = buildExtraQueue({
+      cards,
+      events: [],
+      settings: { extraReviewsPerDay: 3 },
+      now: T0,
+      timeZone: 'UTC',
+    })
+    expect(q.cards.map((c) => c.itemId)).toEqual(['m-00', 'm-01', 'm-02'])
+    expect(q.counts).toMatchObject({ available: 10, doneToday: 0, slotsLeft: 3 })
+  })
+
+  it('décompte les révisions bonus déjà faites aujourd’hui', () => {
+    const b = new JournalBuilder()
+    const c1 = mature('bonus-1', { due: T0 + 5 * DAY })
+    b.create(c1, T0 - 10 * DAY)
+    b.review(c1.id, 'good', T0 - 2 * 3_600_000) // carte mûre révisée en avance aujourd'hui
+
+    expect(countExtraReviewedToday(b.events, T0, 'UTC')).toBe(1)
+
+    const cards = Array.from({ length: 5 }, (_, i) => mature(`m-${i}`, { due: T0 + (i + 1) * DAY }))
+    const q = buildExtraQueue({
+      cards,
+      events: b.events,
+      settings: { extraReviewsPerDay: 3 },
+      now: T0,
+      timeZone: 'UTC',
+    })
+    expect(q.counts).toMatchObject({ doneToday: 1, slotsLeft: 2 })
+    expect(q.cards).toHaveLength(2)
+  })
+
+  it('ne compte pas une révision normale (carte due aujourd’hui) comme bonus', () => {
+    const b = new JournalBuilder()
+    const c1 = mature('normal', { due: T0 - 3_600_000 })
+    b.create(c1, T0 - 10 * DAY)
+    b.review(c1.id, 'good', T0)
+    expect(countExtraReviewedToday(b.events, T0, 'UTC')).toBe(0)
   })
 })

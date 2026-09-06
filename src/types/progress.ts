@@ -5,6 +5,8 @@ export interface Settings {
   dailyReviewTarget: number
   /** plafond de nouvelles cartes introduites par jour */
   newCardsPerDay: number
+  /** plafond de révisions « en plus » (cartes mûres révisées en avance) par jour */
+  extraReviewsPerDay: number
   /** minutes visées par session (fin de session au choix : file vide OU objectif atteint) */
   dailyMinutesTarget: number
   audioEnabled: boolean
@@ -17,6 +19,7 @@ export const DEFAULT_SETTINGS: Settings = {
   id: 'settings',
   dailyReviewTarget: 40,
   newCardsPerDay: 8,
+  extraReviewsPerDay: 20,
   dailyMinutesTarget: 10,
   audioEnabled: true,
   theme: 'system',

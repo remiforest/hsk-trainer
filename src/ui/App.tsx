@@ -17,7 +17,7 @@ export interface AppProps {
   bootConfig?: BootConfig
 }
 
-type Screen = 'home' | 'session' | 'lesson' | 'settings' | 'backups'
+type Screen = 'home' | 'session' | 'session-extra' | 'lesson' | 'settings' | 'backups'
 
 export function App({ bootConfig }: AppProps = {}): JSX.Element {
   // Horloge figée au montage : une session dure quelques minutes, inutile de la
@@ -67,11 +67,12 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
     )
   }
 
-  if (screen === 'session') {
+  if (screen === 'session' || screen === 'session-extra') {
     return (
       <SessionScreen
         db={state.db}
         catalog={getCatalog()}
+        mode={screen === 'session-extra' ? 'extra' : 'due'}
         {...(timeZone !== undefined ? { timeZone } : {})}
         onFinish={() => setScreen('home')}
       />
@@ -111,6 +112,7 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
       now={now}
       {...(timeZone !== undefined ? { timeZone } : {})}
       onStartSession={() => setScreen('session')}
+      onStartExtra={() => setScreen('session-extra')}
       onStartLesson={() => setScreen('lesson')}
       onOpenSettings={() => setScreen('settings')}
       onOpenBackups={() => setScreen('backups')}

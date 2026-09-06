@@ -76,6 +76,7 @@ describe('HomeScreen', () => {
         now={NOW}
         timeZone="UTC"
         onStartSession={onStart}
+        onStartExtra={vi.fn()}
         onStartLesson={onLesson}
         onOpenSettings={vi.fn()}
         onOpenBackups={vi.fn()}
@@ -101,6 +102,7 @@ describe('HomeScreen', () => {
         now={NOW}
         timeZone="UTC"
         onStartSession={vi.fn()}
+        onStartExtra={vi.fn()}
         onStartLesson={onLesson}
         onOpenSettings={vi.fn()}
         onOpenBackups={vi.fn()}
@@ -121,6 +123,7 @@ describe('HomeScreen', () => {
         now={NOW}
         timeZone="UTC"
         onStartSession={vi.fn()}
+        onStartExtra={vi.fn()}
         onStartLesson={vi.fn()}
         onOpenSettings={vi.fn()}
         onOpenBackups={vi.fn()}
@@ -129,5 +132,30 @@ describe('HomeScreen', () => {
 
     expect(await screen.findByText(/Rien à réviser/)).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: /Commencer/ })).not.toBeInTheDocument()
+  })
+
+  it('propose « Réviser en plus » quand la file du jour est vide mais des cartes mûres existent', async () => {
+    const db = await freshDb('home-extra')
+    // aucune carte due aujourd'hui, une carte mûre dont l'échéance est dans 3 jours
+    await db.cards.bulkPut([reviewable('w-0100', { due: NOW + 3 * 24 * HOUR })])
+    const onStartExtra = vi.fn()
+
+    render(
+      <HomeScreen
+        db={db}
+        catalog={getCatalog()}
+        now={NOW}
+        timeZone="UTC"
+        onStartSession={vi.fn()}
+        onStartExtra={onStartExtra}
+        onStartLesson={vi.fn()}
+        onOpenSettings={vi.fn()}
+        onOpenBackups={vi.fn()}
+      />,
+    )
+
+    const btn = await screen.findByRole('button', { name: /Réviser en plus \(1\)/ })
+    await userEvent.click(btn)
+    expect(onStartExtra).toHaveBeenCalledOnce()
   })
 })

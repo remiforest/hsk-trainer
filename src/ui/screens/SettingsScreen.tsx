@@ -17,6 +17,7 @@ export interface SettingsScreenProps {
 
 interface FormState {
   newCardsPerDay: string
+  extraReviewsPerDay: string
   dailyReviewTarget: string
   dailyMinutesTarget: string
   leechThreshold: string
@@ -26,6 +27,7 @@ interface FormState {
 
 const NUMERIC_BOUNDS = {
   newCardsPerDay: [0, 99],
+  extraReviewsPerDay: [0, 999],
   dailyReviewTarget: [0, 999],
   dailyMinutesTarget: [0, 120],
   leechThreshold: [1, 20],
@@ -34,6 +36,7 @@ const NUMERIC_BOUNDS = {
 function toForm(s: Settings): FormState {
   return {
     newCardsPerDay: String(s.newCardsPerDay),
+    extraReviewsPerDay: String(s.extraReviewsPerDay),
     dailyReviewTarget: String(s.dailyReviewTarget),
     dailyMinutesTarget: String(s.dailyMinutesTarget),
     leechThreshold: String(s.leechThreshold),
@@ -53,6 +56,7 @@ function clampInt(raw: string, [min, max]: readonly [number, number]): number {
 function toSettings(form: FormState): Omit<Settings, 'id'> {
   return {
     newCardsPerDay: clampInt(form.newCardsPerDay, NUMERIC_BOUNDS.newCardsPerDay),
+    extraReviewsPerDay: clampInt(form.extraReviewsPerDay, NUMERIC_BOUNDS.extraReviewsPerDay),
     dailyReviewTarget: clampInt(form.dailyReviewTarget, NUMERIC_BOUNDS.dailyReviewTarget),
     dailyMinutesTarget: clampInt(form.dailyMinutesTarget, NUMERIC_BOUNDS.dailyMinutesTarget),
     leechThreshold: clampInt(form.leechThreshold, NUMERIC_BOUNDS.leechThreshold),
@@ -126,6 +130,12 @@ export function SettingsScreen({ db, onDone }: SettingsScreenProps): JSX.Element
           label="Nouvelles cartes par jour"
           value={form.newCardsPerDay}
           onChange={(v) => setForm({ ...form, newCardsPerDay: v })}
+        />
+        <NumberField
+          id="extraReviewsPerDay"
+          label="Révisions « en plus » par jour"
+          value={form.extraReviewsPerDay}
+          onChange={(v) => setForm({ ...form, extraReviewsPerDay: v })}
         />
         <NumberField
           id="dailyReviewTarget"

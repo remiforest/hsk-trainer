@@ -107,6 +107,58 @@ describe('SessionScreen', () => {
     expect(await getAllEvents(db)).toHaveLength(0)
   })
 
+  it('carte en reconnaissance : le hanzi n’est affiché qu’une fois après révélation', async () => {
+    const db = await seed([reviewCard('w-0001')])
+    const user = userEvent.setup()
+
+    render(
+      <SessionScreen
+        db={db}
+        catalog={getCatalog()}
+        timeZone="UTC"
+        clock={() => NOW}
+        rng={() => 0}
+        onFinish={vi.fn()}
+      />,
+    )
+
+    const reveal = await screen.findByRole('button', { name: /Afficher la réponse/ })
+    const hanzi = document.querySelector('[lang="zh-CN"]')?.textContent ?? ''
+    expect(hanzi).not.toBe('')
+
+    await user.click(reveal)
+
+    // avant le correctif, l'énoncé + le bloc de révélation affichaient 不客气 deux fois
+    expect(screen.getAllByText(hanzi)).toHaveLength(1)
+  })
+
+  it('mode « extra » : déroule une carte mûre non encore due', async () => {
+    const db = await seed([reviewCard('w-0001', { due: NOW + 3 * 24 * HOUR })])
+    const onFinish = vi.fn()
+    let t = NOW
+    const user = userEvent.setup()
+
+    render(
+      <SessionScreen
+        db={db}
+        catalog={getCatalog()}
+        timeZone="UTC"
+        mode="extra"
+        clock={() => t}
+        rng={() => 0}
+        onFinish={onFinish}
+      />,
+    )
+
+    await user.click(await screen.findByRole('button', { name: /Afficher la réponse/ }))
+    t += 3000
+    await user.click(await screen.findByRole('button', { name: 'Bien' }))
+
+    await user.click(await screen.findByRole('button', { name: /Retour à l’accueil/ }))
+    expect(onFinish).toHaveBeenCalledOnce()
+    expect(await getAllEvents(db)).toHaveLength(1)
+  })
+
   it('permet d’arrêter la session en cours', async () => {
     const db = await seed([reviewCard('w-0001'), reviewCard('w-0002')])
     const onFinish = vi.fn()

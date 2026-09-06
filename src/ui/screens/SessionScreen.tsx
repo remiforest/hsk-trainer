@@ -9,8 +9,8 @@ import { comparePinyin } from '../../core/pinyin/compare'
 import { PinyinParseError } from '../../core/pinyin/normalize'
 import { type ChoiceQuestion, type PinyinQuestion } from '../../core/cards/quiz'
 import { type SessionEndReason, type SessionSummary } from '../../core/srs/session'
-import { type DayQueue } from '../../core/srs/queue'
-import { getDayPlan } from '../../db/review-session'
+import { type DayQueue, type ExtraQueue } from '../../core/srs/queue'
+import { getDayPlan, getExtraPlan } from '../../db/review-session'
 import { ensureSettings } from '../../db/repositories/singletons'
 import { type HskDatabase } from '../../db/db'
 import { type ContentCatalog } from '../../types/content'
@@ -25,10 +25,21 @@ export interface SessionScreenProps {
   db: HskDatabase
   catalog: ContentCatalog
   timeZone?: string
+  /** `'due'` : file du jour (défaut). `'extra'` : révisions « en plus », cartes mûres en avance. */
+  mode?: 'due' | 'extra'
   /** injectés pour les tests */
   clock?: () => number
   rng?: () => number
   onFinish: () => void
+}
+
+/** Adapte la file « en plus » à la forme attendue par `useSession` (aucune nouvelle carte). */
+function extraAsDayQueue(extra: ExtraQueue): DayQueue {
+  return {
+    due: extra.cards,
+    fresh: [],
+    counts: { due: extra.cards.length, newAvailable: 0, newIntroducedToday: 0, newSlotsLeft: 0 },
+  }
 }
 
 const RATING_LABEL: Record<Rating, string> = {
@@ -56,6 +67,7 @@ export function SessionScreen({
   db,
   catalog,
   timeZone,
+  mode = 'due',
   clock = Date.now,
   rng = Math.random,
   onFinish,
@@ -68,7 +80,10 @@ export function SessionScreen({
     void (async () => {
       try {
         const settings = await ensureSettings(db)
-        const plan = await getDayPlan(db, settings, clock(), timeZone)
+        const plan =
+          mode === 'extra'
+            ? extraAsDayQueue(await getExtraPlan(db, settings, clock(), timeZone))
+            : await getDayPlan(db, settings, clock(), timeZone)
         if (!cancelled) {
           setLoaded({ plan, settings })
         }
@@ -81,7 +96,7 @@ export function SessionScreen({
     return () => {
       cancelled = true
     }
-  }, [db, timeZone, clock])
+  }, [db, timeZone, mode, clock])
 
   if (loadError !== null) {
     return (
@@ -467,6 +482,12 @@ function RevealExercise({
 }): JSX.Element {
   const revealed = phase.kind === 'graded'
   const isAudio = prompt.kind === 'word' && prompt.promptKind === 'audio'
+  // Le hanzi est déjà à l'écran comme énoncé quand il EST la question, ou quand
+  // l'audio est coupé (on montre alors le hanzi à la place du bouton). Dans ces
+  // cas, le bloc de révélation ne doit pas le réafficher — sinon 不客气 apparaît
+  // deux fois.
+  const hanziIsPrompt =
+    prompt.kind === 'word' && (prompt.promptKind === 'hanzi' || (isAudio && !audioEnabled))
   const [audioHint, setAudioHint] = useState<string | null>(null)
 
   // Pas de lecture automatique : les navigateurs la bloquent hors geste
@@ -530,7 +551,7 @@ function RevealExercise({
         <RevealButton onReveal={onReveal} />
       ) : (
         <div className="flex flex-col items-center gap-2">
-          <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>
+          {!hanziIsPrompt && <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>}
           <p className="text-lg opacity-80" lang="zh-CN">
             {prompt.pinyin}
           </p>

@@ -13,7 +13,7 @@ import { getAllCards } from './repositories/cards'
 import { getAllEvents } from './repositories/events'
 import { ensureProgress } from './repositories/singletons'
 import { addDaysToDayKey, localDayKey } from '../core/time/day'
-import { buildDayQueue, type DayQueue } from '../core/srs/queue'
+import { buildDayQueue, buildExtraQueue, type DayQueue, type ExtraQueue } from '../core/srs/queue'
 import { type LeechDecision } from '../core/srs/leech'
 import { type ReviewOutcome } from '../core/srs/scheduler'
 import { generateCardsForLesson, type GenerateOptions } from '../core/cards/generate'
@@ -30,6 +30,27 @@ export async function getDayPlan(
 ): Promise<DayQueue> {
   const [cards, events] = await Promise.all([getAllCards(db), getAllEvents(db)])
   return buildDayQueue({
+    cards,
+    events,
+    settings,
+    now,
+    ...(timeZone !== undefined ? { timeZone } : {}),
+  })
+}
+
+/**
+ * File de révision « en plus » : cartes mûres révisables en avance, pour
+ * continuer quand la file du jour est épuisée. Ne touche jamais aux nouvelles
+ * cartes ni au plafond `newCardsPerDay`.
+ */
+export async function getExtraPlan(
+  db: HskDatabase,
+  settings: Pick<Settings, 'extraReviewsPerDay'>,
+  now: number,
+  timeZone?: string,
+): Promise<ExtraQueue> {
+  const [cards, events] = await Promise.all([getAllCards(db), getAllEvents(db)])
+  return buildExtraQueue({
     cards,
     events,
     settings,

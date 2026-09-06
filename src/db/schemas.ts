@@ -86,6 +86,8 @@ export const settingsSchema = z.object({
   id: z.literal('settings'),
   dailyReviewTarget: intNonNeg,
   newCardsPerDay: intNonNeg,
+  // Ajouté après coup : les bundles exportés avant cette version n'ont pas le champ.
+  extraReviewsPerDay: intNonNeg.default(20),
   dailyMinutesTarget: intNonNeg,
   audioEnabled: z.boolean(),
   theme: z.enum(['light', 'dark', 'system']),

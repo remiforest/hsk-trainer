@@ -7,8 +7,14 @@
 import { useEffect, useState, type JSX } from 'react'
 import { type HskDatabase } from '../../db/db'
 import { ensureProgress, ensureSettings } from '../../db/repositories/singletons'
-import { getDayPlan, getTodayStats, nextLesson, type TodayStats } from '../../db/review-session'
-import { type DayQueue } from '../../core/srs/queue'
+import {
+  getDayPlan,
+  getExtraPlan,
+  getTodayStats,
+  nextLesson,
+  type TodayStats,
+} from '../../db/review-session'
+import { type DayQueue, type ExtraQueue } from '../../core/srs/queue'
 import { type ContentCatalog, type Lesson } from '../../types/content'
 import { formatDuration, formatStreak } from '../format'
 
@@ -18,6 +24,7 @@ export interface HomeScreenProps {
   now: number
   timeZone?: string
   onStartSession: () => void
+  onStartExtra: () => void
   onStartLesson: () => void
   onOpenSettings: () => void
   onOpenBackups: () => void
@@ -25,6 +32,7 @@ export interface HomeScreenProps {
 
 interface HomeData {
   plan: DayQueue
+  extra: ExtraQueue
   stats: TodayStats
   streak: number
   lesson: Lesson | null
@@ -36,6 +44,7 @@ export function HomeScreen({
   now,
   timeZone,
   onStartSession,
+  onStartExtra,
   onStartLesson,
   onOpenSettings,
   onOpenBackups,
@@ -46,13 +55,15 @@ export function HomeScreen({
     let cancelled = false
     void (async () => {
       const [settings, progress] = await Promise.all([ensureSettings(db), ensureProgress(db)])
-      const [plan, stats] = await Promise.all([
+      const [plan, extra, stats] = await Promise.all([
         getDayPlan(db, settings, now, timeZone),
+        getExtraPlan(db, settings, now, timeZone),
         getTodayStats(db, now, timeZone),
       ])
       if (!cancelled) {
         setData({
           plan,
+          extra,
           stats,
           streak: progress.streakDays,
           lesson: nextLesson([...catalog.lessons.values()], progress.completedLessonIds),
@@ -77,6 +88,7 @@ export function HomeScreen({
   const toReview = data.plan.counts.due
   const fresh = data.plan.fresh.length
   const nothingToDo = toReview + fresh === 0
+  const extraCount = data.extra.cards.length
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-8 p-6">
@@ -126,17 +138,45 @@ export function HomeScreen({
 
       <section className="mt-auto flex flex-col gap-3">
         {nothingToDo ? (
-          <p className="rounded-lg bg-black/5 p-4 text-center text-sm dark:bg-white/10">
-            Rien à réviser pour le moment. Revenez plus tard 🎉
-          </p>
+          extraCount > 0 ? (
+            <>
+              <p className="rounded-lg bg-black/5 p-4 text-center text-sm dark:bg-white/10">
+                File du jour terminée. Vous pouvez réviser en avance des cartes déjà vues.
+              </p>
+              <button
+                type="button"
+                onClick={onStartExtra}
+                className="rounded-lg bg-black px-4 py-3 text-center font-medium text-white dark:bg-white dark:text-black"
+              >
+                Réviser en plus ({extraCount})
+              </button>
+            </>
+          ) : (
+            <p className="rounded-lg bg-black/5 p-4 text-center text-sm dark:bg-white/10">
+              {data.extra.counts.doneToday > 0
+                ? 'Révisions bonus faites pour aujourd’hui. Revenez plus tard 🎉'
+                : 'Rien à réviser pour le moment. Revenez plus tard 🎉'}
+            </p>
+          )
         ) : (
-          <button
-            type="button"
-            onClick={onStartSession}
-            className="rounded-lg bg-black px-4 py-3 text-center font-medium text-white dark:bg-white dark:text-black"
-          >
-            Commencer la session ({toReview + fresh})
-          </button>
+          <>
+            <button
+              type="button"
+              onClick={onStartSession}
+              className="rounded-lg bg-black px-4 py-3 text-center font-medium text-white dark:bg-white dark:text-black"
+            >
+              Commencer la session ({toReview + fresh})
+            </button>
+            {extraCount > 0 && (
+              <button
+                type="button"
+                onClick={onStartExtra}
+                className="rounded-lg border border-current/20 px-4 py-2 text-center text-sm font-medium"
+              >
+                Réviser en plus ({extraCount})
+              </button>
+            )}
+          </>
         )}
       </section>
     </main>
