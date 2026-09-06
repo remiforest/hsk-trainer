@@ -410,12 +410,26 @@ function RevealExercise({
 }): JSX.Element {
   const revealed = phase.kind === 'graded'
   const isAudio = prompt.kind === 'word' && prompt.promptKind === 'audio'
+  const [audioHint, setAudioHint] = useState<string | null>(null)
 
   useEffect(() => {
     if (isAudio && audioEnabled && prompt.kind === 'word') {
       speak(prompt.hanzi)
     }
   }, [prompt, audioEnabled, isAudio])
+
+  const play = (hanzi: string): void => {
+    const outcome = speak(hanzi)
+    setAudioHint(
+      outcome === 'unsupported'
+        ? 'Synthèse vocale indisponible dans ce navigateur.'
+        : outcome === 'no-chinese-voice'
+          ? 'Aucune voix chinoise installée sur le système — le son peut manquer ou être incorrect.'
+          : outcome === 'error'
+            ? 'Lecture audio impossible.'
+            : null,
+    )
+  }
 
   if (prompt.kind === 'grammar') {
     return (
@@ -441,13 +455,18 @@ function RevealExercise({
       {prompt.promptKind === 'hanzi' && <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>}
       {prompt.promptKind === 'sense' && <Prompt>{prompt.sense}</Prompt>}
       {isAudio && (
-        <button
-          type="button"
-          onClick={() => speak(prompt.hanzi)}
-          className="mx-auto rounded-full border border-current/20 px-5 py-3 text-lg"
-        >
-          🔊 Écouter
-        </button>
+        <div className="flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => play(prompt.hanzi)}
+            className="rounded-full border border-current/20 px-5 py-3 text-lg"
+          >
+            🔊 Écouter
+          </button>
+          {audioHint !== null && (
+            <p className="max-w-xs text-center text-xs opacity-70">{audioHint}</p>
+          )}
+        </div>
       )}
       {!revealed ? (
         <RevealButton onReveal={onReveal} />
