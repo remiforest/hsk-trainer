@@ -1,20 +1,60 @@
+import { afterEach, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { HskDatabase } from '../db/db'
+import { makeCard } from '../test/factories'
+import { type BootConfig } from './useBootstrap'
 import { App } from './App'
 
+const NOW = Date.UTC(2026, 0, 15, 9, 0, 0)
+
+const uniqueName = (p: string): string =>
+  `${p}-${Date.now()}-${Math.random().toString(36).slice(2)}`
+
+const openDbs: HskDatabase[] = []
+afterEach(async () => {
+  for (const d of openDbs.splice(0)) {
+    d.close()
+    await d.delete().catch(() => undefined)
+  }
+})
+
+function config(prefix: string): BootConfig {
+  return { dbName: uniqueName(prefix), now: NOW, timeZone: 'UTC' }
+}
+
 describe('App', () => {
-  it("affiche le titre de l'application", () => {
-    render(<App />)
-    expect(screen.getByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
+  it('affiche le chargement puis l’accueil', async () => {
+    render(<App bootConfig={config('app-boot')} />)
+
+    expect(screen.getByRole('status')).toHaveTextContent(/Vérification/)
+    expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
   })
 
-  it('affiche un exemple de chinois avec son pinyin', () => {
-    render(<App />)
-    expect(screen.getByText(/nǐ hǎo/)).toBeInTheDocument()
-    expect(screen.getByText(/你好/)).toHaveAttribute('lang', 'zh-CN')
+  it('sur une base vierge, indique qu’il n’y a rien à réviser', async () => {
+    render(<App bootConfig={config('app-empty')} />)
+
+    expect(await screen.findByText(/Rien à réviser/)).toBeInTheDocument()
   })
 
-  it('charge et affiche le contenu HSK 1', () => {
-    render(<App />)
-    expect(screen.getByText(/mots/)).toHaveTextContent(/\d+ mots/)
+  it('navigue vers la session et en revient', async () => {
+    const cfg = config('app-nav')
+    const db = new HskDatabase(cfg.dbName)
+    await db.open()
+    await db.cards.bulkPut([
+      makeCard({ itemId: 'w-0001', state: 'new', due: NOW, createdAt: NOW }),
+      makeCard({ itemId: 'w-0002', state: 'new', due: NOW, createdAt: NOW }),
+    ])
+    db.close()
+
+    render(<App bootConfig={cfg} />)
+
+    const start = await screen.findByRole('button', { name: /Commencer la session/ })
+    await userEvent.click(start)
+
+    expect(await screen.findByText(/étape 7/)).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: /Retour à l’accueil/ }))
+    expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
   })
 })

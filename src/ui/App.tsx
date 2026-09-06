@@ -1,20 +1,58 @@
-import { type JSX } from 'react'
-import { loadContent } from '../data'
+import { useState, type JSX } from 'react'
+import { useBootstrap, type BootConfig } from './useBootstrap'
+import { ErrorScreen } from './screens/ErrorScreen'
+import { HomeScreen } from './screens/HomeScreen'
+import { LoadingScreen } from './screens/LoadingScreen'
+import { RecoveryScreen } from './screens/RecoveryScreen'
+import { SessionScreen } from './screens/SessionScreen'
 
-export function App(): JSX.Element {
-  const { words, grammarPoints, lessons } = loadContent()
+export interface AppProps {
+  /** injection pour les tests (nom de base isolé, horloge fixe) */
+  bootConfig?: BootConfig
+}
 
+type Screen = 'home' | 'session'
+
+export function App({ bootConfig }: AppProps = {}): JSX.Element {
+  // Horloge figée au montage : une session dure quelques minutes, inutile de la
+  // faire dériver, et le démarrage et l'accueil partagent le même « maintenant ».
+  const [now] = useState(() => bootConfig?.now ?? Date.now())
+  const timeZone = bootConfig?.timeZone
+
+  const { state, reload } = useBootstrap({
+    ...bootConfig,
+    now,
+  })
+  const [screen, setScreen] = useState<Screen>('home')
+
+  if (state.phase === 'loading') {
+    return <LoadingScreen />
+  }
+  if (state.phase === 'error') {
+    return <ErrorScreen error={state.error} onRetry={reload} />
+  }
+  if (state.phase === 'recovery') {
+    return (
+      <RecoveryScreen
+        db={state.db}
+        report={state.report}
+        snapshots={state.snapshots}
+        now={now}
+        {...(timeZone !== undefined ? { timeZone } : {})}
+        onRecovered={reload}
+      />
+    )
+  }
+
+  if (screen === 'session') {
+    return <SessionScreen onExit={() => setScreen('home')} />
+  }
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center gap-4 p-6 text-center">
-      <h1 className="text-3xl font-semibold">HSK Trainer</h1>
-      <p className="font-hanzi text-2xl" lang="zh-CN">
-        你好 <span className="opacity-60">· nǐ hǎo</span>
-      </p>
-      <p className="text-sm opacity-70">
-        Contenu HSK 1 chargé : {words.length} mots · {grammarPoints.length} points de grammaire ·{' '}
-        {lessons.length} leçons.
-      </p>
-      <p className="text-xs opacity-50">Squelette — la session de révision arrive à l’étape 5.</p>
-    </main>
+    <HomeScreen
+      db={state.db}
+      now={now}
+      {...(timeZone !== undefined ? { timeZone } : {})}
+      onStartSession={() => setScreen('session')}
+    />
   )
 }
