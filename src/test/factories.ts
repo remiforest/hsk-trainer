@@ -15,7 +15,13 @@ import {
   type UserProgress,
 } from '../types/progress'
 import { type UserDataDump } from '../types/backup'
-import { buildCatalog, type ContentCatalog, type GrammarPoint, type Word } from '../types/content'
+import {
+  buildCatalog,
+  type ContentCatalog,
+  type GrammarPoint,
+  type Lesson,
+  type Word,
+} from '../types/content'
 
 const DAY_MS = 86_400_000
 
@@ -169,6 +175,20 @@ export function makeGrammarPoint(overrides: Partial<GrammarPoint> = {}): Grammar
     structure: 'A + 的 + N',
     exemples: [{ hanzi: '我的书', pinyin: 'wǒ de shū', fr: 'mon livre' }],
     niveauHsk: 1,
+    ...overrides,
+  }
+}
+
+export function makeLesson(overrides: Partial<Lesson> = {}): Lesson {
+  return {
+    id: 'lesson-0001',
+    titre: 'Se présenter',
+    ordre: 1,
+    objectif: 'Saluer et dire son nom.',
+    niveauHsk: 1,
+    wordIds: [],
+    grammarPointIds: [],
+    prerequisites: [],
     ...overrides,
   }
 }
