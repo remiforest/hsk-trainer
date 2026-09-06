@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Thème piloté par `data-theme` sur <html> (posé par src/ui/theme.ts). */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
   --font-hanzi: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }

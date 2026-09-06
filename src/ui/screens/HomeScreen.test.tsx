@@ -77,6 +77,7 @@ describe('HomeScreen', () => {
         timeZone="UTC"
         onStartSession={onStart}
         onStartLesson={onLesson}
+        onOpenSettings={vi.fn()}
       />,
     )
 
@@ -100,6 +101,7 @@ describe('HomeScreen', () => {
         timeZone="UTC"
         onStartSession={vi.fn()}
         onStartLesson={onLesson}
+        onOpenSettings={vi.fn()}
       />,
     )
 
@@ -118,6 +120,7 @@ describe('HomeScreen', () => {
         timeZone="UTC"
         onStartSession={vi.fn()}
         onStartLesson={vi.fn()}
+        onOpenSettings={vi.fn()}
       />,
     )
 

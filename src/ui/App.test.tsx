@@ -71,4 +71,14 @@ describe('App', () => {
     // de retour à l'accueil, la session devient possible
     expect(await screen.findByRole('button', { name: /Commencer la session/ })).toBeInTheDocument()
   })
+
+  it('ouvre les réglages depuis l’accueil et y revient', async () => {
+    render(<App bootConfig={config('app-settings')} />)
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Réglages' }))
+    expect(await screen.findByRole('heading', { name: 'Réglages' })).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Annuler' }))
+    expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
+  })
 })

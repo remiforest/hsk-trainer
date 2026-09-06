@@ -19,6 +19,7 @@ export interface HomeScreenProps {
   timeZone?: string
   onStartSession: () => void
   onStartLesson: () => void
+  onOpenSettings: () => void
 }
 
 interface HomeData {
@@ -35,6 +36,7 @@ export function HomeScreen({
   timeZone,
   onStartSession,
   onStartLesson,
+  onOpenSettings,
 }: HomeScreenProps): JSX.Element {
   const [data, setData] = useState<HomeData | null>(null)
 
@@ -76,9 +78,18 @@ export function HomeScreen({
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-8 p-6">
-      <header className="flex flex-col gap-1 pt-4">
-        <h1 className="text-2xl font-semibold">HSK Trainer</h1>
-        <p className="text-sm opacity-70">Série : {formatStreak(data.streak)}</p>
+      <header className="flex items-start justify-between gap-2 pt-4">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-2xl font-semibold">HSK Trainer</h1>
+          <p className="text-sm opacity-70">Série : {formatStreak(data.streak)}</p>
+        </div>
+        <button
+          type="button"
+          onClick={onOpenSettings}
+          className="rounded-lg border border-current/20 px-3 py-1 text-sm font-medium"
+        >
+          Réglages
+        </button>
       </header>
 
       <section className="grid grid-cols-2 gap-3">
