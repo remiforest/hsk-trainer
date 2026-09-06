@@ -380,17 +380,37 @@ function PinyinExercise({
   )
 }
 
-function Examples({ list }: { list: RevealPrompt['examples'] }): JSX.Element | null {
+function Examples({
+  list,
+  audioEnabled,
+  onSpeak,
+}: {
+  list: RevealPrompt['examples']
+  audioEnabled: boolean
+  onSpeak: (text: string) => void
+}): JSX.Element | null {
   if (list.length === 0) {
     return null
   }
   return (
     <ul className="flex flex-col gap-2 text-sm">
       {list.slice(0, 2).map((ex, i) => (
-        <li key={i} className="rounded bg-black/5 p-2 dark:bg-white/10">
-          <span lang="zh-CN">{ex.hanzi}</span> <span className="opacity-60">{ex.pinyin}</span>
-          <br />
-          <span className="opacity-80">{ex.fr}</span>
+        <li key={i} className="flex items-start gap-2 rounded bg-black/5 p-2 dark:bg-white/10">
+          {audioEnabled && (
+            <button
+              type="button"
+              onClick={() => onSpeak(ex.hanzi)}
+              aria-label={`Écouter ${ex.hanzi}`}
+              className="shrink-0 rounded-full border border-current/20 px-1.5 text-xs"
+            >
+              🔊
+            </button>
+          )}
+          <span className="flex-1">
+            <span lang="zh-CN">{ex.hanzi}</span> <span className="opacity-60">{ex.pinyin}</span>
+            <br />
+            <span className="opacity-80">{ex.fr}</span>
+          </span>
         </li>
       ))}
     </ul>
@@ -440,7 +460,7 @@ function RevealExercise({
         ) : (
           <div className="flex flex-col gap-3">
             <p className="text-sm opacity-90">{prompt.explicationFr}</p>
-            <Examples list={prompt.examples} />
+            <Examples list={prompt.examples} audioEnabled={audioEnabled} onSpeak={play} />
           </div>
         )}
       </div>
@@ -478,7 +498,7 @@ function RevealExercise({
             {prompt.pinyin}
           </p>
           <p className="text-lg">{prompt.sense}</p>
-          <Examples list={prompt.examples} />
+          <Examples list={prompt.examples} audioEnabled={audioEnabled} onSpeak={play} />
         </div>
       )}
     </div>

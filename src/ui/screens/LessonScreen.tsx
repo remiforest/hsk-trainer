@@ -156,7 +156,7 @@ export function LessonScreen({ db, catalog, now, onDone }: LessonScreenProps): J
         <section className="flex flex-col gap-3">
           <h2 className="text-sm font-medium opacity-70">Grammaire ({points.length})</h2>
           {points.map((g) => (
-            <GrammarCard key={g.id} point={g} />
+            <GrammarCard key={g.id} point={g} audioEnabled={audioEnabled} onSpeak={play} />
           ))}
         </section>
       )}
@@ -192,7 +192,15 @@ export function LessonScreen({ db, catalog, now, onDone }: LessonScreenProps): J
   )
 }
 
-function GrammarCard({ point }: { point: GrammarPoint }): JSX.Element {
+function GrammarCard({
+  point,
+  audioEnabled,
+  onSpeak,
+}: {
+  point: GrammarPoint
+  audioEnabled: boolean
+  onSpeak: (text: string) => void
+}): JSX.Element {
   const example: Example | undefined = point.exemples[0]
   return (
     <div className="flex flex-col gap-1 rounded-lg border border-current/15 p-3">
@@ -201,11 +209,35 @@ function GrammarCard({ point }: { point: GrammarPoint }): JSX.Element {
         {point.structure}
       </span>
       <span className="text-sm opacity-90">{point.explicationFr}</span>
-      {example && (
-        <span className="text-sm opacity-70">
-          <span lang="zh-CN">{example.hanzi}</span> — {example.fr}
-        </span>
-      )}
+      {example && <ExampleLine example={example} audioEnabled={audioEnabled} onSpeak={onSpeak} />}
     </div>
+  )
+}
+
+function ExampleLine({
+  example,
+  audioEnabled,
+  onSpeak,
+}: {
+  example: Example
+  audioEnabled: boolean
+  onSpeak: (text: string) => void
+}): JSX.Element {
+  return (
+    <span className="flex items-center gap-2 text-sm opacity-70">
+      {audioEnabled && (
+        <button
+          type="button"
+          onClick={() => onSpeak(example.hanzi)}
+          aria-label={`Écouter ${example.hanzi}`}
+          className="shrink-0 rounded-full border border-current/20 px-1.5 text-xs"
+        >
+          🔊
+        </button>
+      )}
+      <span>
+        <span lang="zh-CN">{example.hanzi}</span> — {example.fr}
+      </span>
+    </span>
   )
 }
