@@ -52,9 +52,12 @@ describe('App', () => {
     const start = await screen.findByRole('button', { name: /Commencer la session/ })
     await userEvent.click(start)
 
-    expect(await screen.findByText(/étape 7/)).toBeInTheDocument()
+    // une carte se déroule, puis on arrête la session
+    await userEvent.click(await screen.findByRole('button', { name: /Afficher la réponse/ }))
+    await userEvent.click(await screen.findByRole('button', { name: 'Bien' }))
+    await userEvent.click(await screen.findByRole('button', { name: 'Terminer' }))
 
-    await userEvent.click(screen.getByRole('button', { name: /Retour à l’accueil/ }))
+    await userEvent.click(await screen.findByRole('button', { name: /Retour à l’accueil/ }))
     expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
   })
 })

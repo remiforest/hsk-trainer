@@ -1,4 +1,5 @@
 import { useState, type JSX } from 'react'
+import { getCatalog } from '../data'
 import { useBootstrap, type BootConfig } from './useBootstrap'
 import { ErrorScreen } from './screens/ErrorScreen'
 import { HomeScreen } from './screens/HomeScreen'
@@ -45,7 +46,14 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
   }
 
   if (screen === 'session') {
-    return <SessionScreen onExit={() => setScreen('home')} />
+    return (
+      <SessionScreen
+        db={state.db}
+        catalog={getCatalog()}
+        {...(timeZone !== undefined ? { timeZone } : {})}
+        onFinish={() => setScreen('home')}
+      />
+    )
   }
   return (
     <HomeScreen
