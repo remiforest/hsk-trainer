@@ -3,12 +3,17 @@
  * voix chinoise manque, on n'empêche jamais la révision — on renvoie un
  * `SpeakOutcome` pour que l'UI puisse expliquer un éventuel silence.
  *
- * Pièges gérés ici :
- *  - `getVoices()` peut renvoyer `[]` au premier appel (liste chargée en asynchrone) ;
- *  - certaines voix mandarin s'annoncent `cmn-*` et non `zh-*` ;
- *  - Chrome peut laisser la synthèse en pause après un `cancel()` → `resume()` ;
+ * Choix de conception : on fixe `utterance.lang` et on **laisse le système
+ * choisir sa voix par défaut** pour cette langue. Forcer `utterance.voice` sur la
+ * première voix `zh-*` de la liste tombe souvent sur une voix « nouveauté »
+ * (Eddy, Flo…) qui reste muette.
+ *
+ * Pièges gérés :
+ *  - `getVoices()` peut renvoyer `[]` au premier appel (liste asynchrone) ;
+ *  - voix mandarin annoncées `cmn-*` / `yue-*` autant que `zh-*` ;
+ *  - Chrome peut rester « en pause » après un `cancel()` → `resume()` ;
  *  - une `SpeechSynthesisUtterance` non référencée peut être ramassée par le GC
- *    avant la fin de la lecture → on garde une référence le temps de l'énoncé.
+ *    avant la fin de la lecture.
  */
 
 export type SpeakOutcome = 'spoken' | 'no-chinese-voice' | 'unsupported' | 'error'
@@ -38,17 +43,13 @@ if (canSpeak() && typeof window.speechSynthesis.addEventListener === 'function')
   })
 }
 
-function chineseVoice(): SpeechSynthesisVoice | null {
-  return voices().find((v) => CHINESE_LANG.test(v.lang.replace('_', '-'))) ?? null
-}
-
 /** Une voix chinoise est-elle installée sur le système ? */
 export function hasChineseVoice(): boolean {
-  return chineseVoice() !== null
+  return voices().some((v) => CHINESE_LANG.test(v.lang.replace('_', '-')))
 }
 
-// Empêche le GC de couper un énoncé en cours (bug Chrome) : on garde une
-// référence jusqu'à `onend` / `onerror`.
+// Empêche le GC de couper un énoncé en cours (bug Chrome) : référence retenue
+// jusqu'à `onend` / `onerror`.
 const pinned = new Set<SpeechSynthesisUtterance>()
 
 export function speak(text: string, lang = 'zh-CN'): SpeakOutcome {
@@ -57,12 +58,10 @@ export function speak(text: string, lang = 'zh-CN'): SpeakOutcome {
   }
   try {
     const synth = window.speechSynthesis
-    const voice = chineseVoice()
+    const hasVoice = hasChineseVoice()
+
     const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = voice ? voice.lang : lang
-    if (voice) {
-      utterance.voice = voice
-    }
+    utterance.lang = lang
     utterance.onend = () => pinned.delete(utterance)
     utterance.onerror = () => pinned.delete(utterance)
     pinned.add(utterance)
@@ -70,7 +69,8 @@ export function speak(text: string, lang = 'zh-CN'): SpeakOutcome {
     synth.cancel() // vide une file éventuellement bloquée
     synth.resume() // Chrome reste parfois « en pause » après un cancel
     synth.speak(utterance)
-    return voice ? 'spoken' : 'no-chinese-voice'
+
+    return hasVoice ? 'spoken' : 'no-chinese-voice'
   } catch {
     return 'error'
   }
