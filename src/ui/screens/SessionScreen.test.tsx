@@ -74,6 +74,36 @@ describe('SessionScreen', () => {
     expect(await getAllEvents(db)).toHaveLength(1)
   })
 
+  it('saisie ratée : « Réessayer » rouvre le champ sans passer à la carte suivante', async () => {
+    const db = await seed([reviewCard('w-0001', { cardType: 'hanzi_to_pinyin' })])
+    const onFinish = vi.fn()
+    const t = NOW
+    const user = userEvent.setup()
+
+    render(
+      <SessionScreen
+        db={db}
+        catalog={getCatalog()}
+        timeZone="UTC"
+        clock={() => t}
+        rng={() => 0}
+        onFinish={onFinish}
+      />,
+    )
+
+    const input = await screen.findByRole('textbox', { name: /pinyin/i })
+    await user.type(input, 'faux')
+    await user.click(screen.getByRole('button', { name: 'Vérifier' }))
+
+    const retry = await screen.findByRole('button', { name: 'Réessayer' })
+    await user.click(retry)
+
+    // le champ est de nouveau actif, aucune note écrite, toujours la même carte
+    expect(await screen.findByRole('button', { name: 'Vérifier' })).toBeInTheDocument()
+    expect(screen.getByRole('textbox', { name: /pinyin/i })).not.toBeDisabled()
+    expect(await getAllEvents(db)).toHaveLength(0)
+  })
+
   it('permet d’arrêter la session en cours', async () => {
     const db = await seed([reviewCard('w-0001'), reviewCard('w-0002')])
     const onFinish = vi.fn()

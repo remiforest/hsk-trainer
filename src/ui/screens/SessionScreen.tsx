@@ -4,7 +4,7 @@
  * suivante, jusqu'au résumé.
  */
 
-import { useEffect, useState, type JSX, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type JSX, type ReactNode } from 'react'
 import { comparePinyin } from '../../core/pinyin/compare'
 import { PinyinParseError } from '../../core/pinyin/normalize'
 import { type ChoiceQuestion, type PinyinQuestion } from '../../core/cards/quiz'
@@ -169,9 +169,11 @@ function SessionRunner({
         )}
         {s.exercise.kind === 'pinyin' && (
           <PinyinExercise
+            key={s.card?.id ?? s.exercise.question.hanzi}
             question={s.exercise.question}
             phase={s.phase}
             onSubmit={s.submitPinyin}
+            onRetry={s.retry}
           />
         )}
         {s.exercise.kind === 'reveal' && (
@@ -298,13 +300,17 @@ function PinyinExercise({
   question,
   phase,
   onSubmit,
+  onRetry,
 }: {
   question: PinyinQuestion
   phase: SessionPhase
   onSubmit: (correct: boolean) => void
+  onRetry: () => void
 }): JSX.Element {
   const [value, setValue] = useState('')
   const [verdict, setVerdict] = useState<'correct' | 'missing-tone' | 'wrong' | null>(null)
+  const [showAnswer, setShowAnswer] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
   const graded = phase.kind === 'graded'
 
   const check = (): void => {
@@ -325,6 +331,14 @@ function PinyinExercise({
     }
   }
 
+  // Nouvelle tentative : on rouvre la question sans effacer la saisie (souvent
+  // juste un ton à corriger) et on redonne le focus au champ.
+  const retry = (): void => {
+    setVerdict(null)
+    onRetry()
+    requestAnimationFrame(() => inputRef.current?.focus())
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <Prompt lang="zh-CN">{question.hanzi}</Prompt>
@@ -337,6 +351,7 @@ function PinyinExercise({
         }}
       >
         <input
+          ref={inputRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           disabled={graded}
@@ -357,7 +372,7 @@ function PinyinExercise({
         )}
       </form>
       {graded && (
-        <div className="text-center text-sm">
+        <div className="flex flex-col items-center gap-2 text-center text-sm">
           <p
             className={
               verdict === 'correct'
@@ -368,12 +383,31 @@ function PinyinExercise({
             {verdict === 'correct'
               ? '✓ Correct'
               : verdict === 'missing-tone'
-                ? 'Ton manquant'
+                ? 'Presque — le ton n’est pas bon'
                 : '✗ Incorrect'}
           </p>
-          <p className="opacity-70">
-            Réponse : <span lang="zh-CN">{question.referencePinyin}</span>
-          </p>
+          {verdict !== 'correct' && !showAnswer ? (
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={retry}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white dark:bg-white dark:text-black"
+              >
+                Réessayer
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowAnswer(true)}
+                className="text-sm underline opacity-70 hover:opacity-100"
+              >
+                Voir la réponse
+              </button>
+            </div>
+          ) : (
+            <p className="opacity-70">
+              Réponse : <span lang="zh-CN">{question.referencePinyin}</span>
+            </p>
+          )}
         </div>
       )}
     </div>

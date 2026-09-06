@@ -133,6 +133,30 @@ describe('useSession', () => {
     expect(await getAllEvents(db)).toHaveLength(1)
   })
 
+  it('retry ramène la carte de saisie à la question sans rien persister', async () => {
+    const { deps, db, clock } = await setup(
+      [due('w-0001', { cardType: 'hanzi_to_pinyin' })],
+      makeSettings(),
+    )
+    const { result } = renderHook(() => useSession({ ...deps, clock }))
+
+    expect(result.current.exercise?.kind).toBe('pinyin')
+    const id = result.current.card?.id
+
+    act(() => {
+      result.current.submitPinyin(false)
+    })
+    expect(result.current.phase).toMatchObject({ kind: 'graded', correct: false })
+
+    act(() => {
+      result.current.retry()
+    })
+    expect(result.current.phase.kind).toBe('question')
+    expect(result.current.card?.id).toBe(id)
+    expect(result.current.progress.done).toBe(0)
+    expect(await getAllEvents(db)).toHaveLength(0)
+  })
+
   it('termine la session et produit un résumé quand la file se vide', async () => {
     const settings = makeSettings({ dailyReviewTarget: 0, dailyMinutesTarget: 0 })
     const { deps, db, clock, tick } = await setup([due('w-0001')], settings)

@@ -60,6 +60,8 @@ export interface UseSession {
   submitChoice: (optionId: string) => void
   /** saisie pinyin : le composant a comparé et transmet le verdict */
   submitPinyin: (correct: boolean) => void
+  /** saisie pinyin : revenir à la question pour retenter après une erreur */
+  retry: () => void
   /** cartes en reconnaissance : l'utilisateur demande la réponse */
   reveal: () => void
   /** note finale (Encore / Difficile / Bien / Facile) → persistée */
@@ -138,6 +140,16 @@ export function useSession(deps: UseSessionDeps): UseSession {
     setPhase({ kind: 'graded', correct: null, picked: null })
   }
 
+  // Rien n'a encore été persisté au stade `graded` : on peut sans risque
+  // rouvrir la question pour laisser l'utilisateur retenter sa saisie.
+  const retry = (): void => {
+    if (phase.kind !== 'graded' || persisting) {
+      return
+    }
+    setError(null)
+    setPhase({ kind: 'question' })
+  }
+
   const grade = (rating: Rating): void => {
     if (
       state.status !== 'active' ||
@@ -201,6 +213,7 @@ export function useSession(deps: UseSessionDeps): UseSession {
     error,
     submitChoice,
     submitPinyin,
+    retry,
     reveal,
     grade,
     stop,
