@@ -39,6 +39,11 @@ describe('LessonScreen', () => {
     expect(await screen.findByRole('heading', { name: 'Bonjour !' })).toBeInTheDocument()
     expect(screen.getByText(/Vocabulaire \(8\)/)).toBeInTheDocument()
 
+    // un bouton d'écoute par mot ; le clic ne casse pas (pas de synthèse en jsdom)
+    const listen = screen.getAllByRole('button', { name: /Écouter / })
+    expect(listen).toHaveLength(8)
+    await userEvent.click(listen[0] as HTMLElement)
+
     await userEvent.click(screen.getByRole('button', { name: /J’ai étudié/ }))
 
     await waitFor(() => expect(onDone).toHaveBeenCalledOnce())

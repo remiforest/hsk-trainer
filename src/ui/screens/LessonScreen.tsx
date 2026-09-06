@@ -5,7 +5,7 @@
  */
 
 import { useEffect, useState, type JSX, type ReactNode } from 'react'
-import { ensureProgress } from '../../db/repositories/singletons'
+import { ensureProgress, ensureSettings } from '../../db/repositories/singletons'
 import { addLessonCards, nextLesson } from '../../db/review-session'
 import { type HskDatabase } from '../../db/db'
 import {
@@ -15,6 +15,7 @@ import {
   type Lesson,
   type Word,
 } from '../../types/content'
+import { speak } from '../speak'
 
 export interface LessonScreenProps {
   db: HskDatabase
@@ -34,16 +35,19 @@ function Centered({ children }: { children: ReactNode }): JSX.Element {
 export function LessonScreen({ db, catalog, now, onDone }: LessonScreenProps): JSX.Element {
   const [status, setStatus] = useState<'loading' | 'ready' | 'none'>('loading')
   const [lesson, setLesson] = useState<Lesson | null>(null)
+  const [audioEnabled, setAudioEnabled] = useState(true)
+  const [audioHint, setAudioHint] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let cancelled = false
     void (async () => {
-      const progress = await ensureProgress(db)
+      const [progress, settings] = await Promise.all([ensureProgress(db), ensureSettings(db)])
       if (cancelled) {
         return
       }
+      setAudioEnabled(settings.audioEnabled)
       const next = nextLesson([...catalog.lessons.values()], progress.completedLessonIds)
       setLesson(next)
       setStatus(next ? 'ready' : 'none')
@@ -52,6 +56,19 @@ export function LessonScreen({ db, catalog, now, onDone }: LessonScreenProps): J
       cancelled = true
     }
   }, [db, catalog])
+
+  const play = (hanzi: string): void => {
+    const outcome = speak(hanzi)
+    setAudioHint(
+      outcome === 'unsupported'
+        ? 'Synthèse vocale indisponible dans ce navigateur.'
+        : outcome === 'no-chinese-voice'
+          ? 'Aucune voix chinoise installée sur le système.'
+          : outcome === 'error'
+            ? 'Lecture audio impossible.'
+            : null,
+    )
+  }
 
   if (status === 'loading') {
     return (
@@ -109,9 +126,20 @@ export function LessonScreen({ db, catalog, now, onDone }: LessonScreenProps): J
 
       <section className="flex flex-col gap-2">
         <h2 className="text-sm font-medium opacity-70">Vocabulaire ({words.length})</h2>
+        {audioHint !== null && <p className="text-xs opacity-70">{audioHint}</p>}
         <ul className="flex flex-col divide-y divide-current/10">
           {words.map((w) => (
-            <li key={w.id} className="flex items-baseline justify-between gap-3 py-2">
+            <li key={w.id} className="flex items-center gap-3 py-2">
+              {audioEnabled && (
+                <button
+                  type="button"
+                  onClick={() => play(w.hanzi)}
+                  aria-label={`Écouter ${w.hanzi}`}
+                  className="shrink-0 rounded-full border border-current/20 px-2 py-1 text-sm"
+                >
+                  🔊
+                </button>
+              )}
               <span className="text-lg" lang="zh-CN" style={{ fontFamily: 'var(--font-hanzi)' }}>
                 {w.hanzi}
               </span>
