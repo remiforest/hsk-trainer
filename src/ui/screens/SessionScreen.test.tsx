@@ -95,8 +95,11 @@ describe('SessionScreen', () => {
     await user.type(input, 'faux')
     await user.click(screen.getByRole('button', { name: 'Vérifier' }))
 
-    const retry = await screen.findByRole('button', { name: 'Réessayer' })
-    await user.click(retry)
+    // « Réessayer » reste offert même après avoir révélé la réponse
+    await user.click(screen.getByRole('button', { name: 'Voir la réponse' }))
+    expect(screen.getByText(/Réponse :/)).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Réessayer' }))
 
     // le champ est de nouveau actif, aucune note écrite, toujours la même carte
     expect(await screen.findByRole('button', { name: 'Vérifier' })).toBeInTheDocument()

@@ -386,7 +386,12 @@ function PinyinExercise({
                 ? 'Presque — le ton n’est pas bon'
                 : '✗ Incorrect'}
           </p>
-          {verdict !== 'correct' && !showAnswer ? (
+          {(verdict === 'correct' || showAnswer) && (
+            <p className="opacity-70">
+              Réponse : <span lang="zh-CN">{question.referencePinyin}</span>
+            </p>
+          )}
+          {verdict !== 'correct' && (
             <div className="flex flex-wrap items-center justify-center gap-2">
               <button
                 type="button"
@@ -395,18 +400,16 @@ function PinyinExercise({
               >
                 Réessayer
               </button>
-              <button
-                type="button"
-                onClick={() => setShowAnswer(true)}
-                className="text-sm underline opacity-70 hover:opacity-100"
-              >
-                Voir la réponse
-              </button>
+              {!showAnswer && (
+                <button
+                  type="button"
+                  onClick={() => setShowAnswer(true)}
+                  className="text-sm underline opacity-70 hover:opacity-100"
+                >
+                  Voir la réponse
+                </button>
+              )}
             </div>
-          ) : (
-            <p className="opacity-70">
-              Réponse : <span lang="zh-CN">{question.referencePinyin}</span>
-            </p>
           )}
         </div>
       )}
