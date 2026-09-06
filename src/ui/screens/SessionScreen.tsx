@@ -412,12 +412,9 @@ function RevealExercise({
   const isAudio = prompt.kind === 'word' && prompt.promptKind === 'audio'
   const [audioHint, setAudioHint] = useState<string | null>(null)
 
-  useEffect(() => {
-    if (isAudio && audioEnabled && prompt.kind === 'word') {
-      speak(prompt.hanzi)
-    }
-  }, [prompt, audioEnabled, isAudio])
-
+  // Pas de lecture automatique : les navigateurs la bloquent hors geste
+  // utilisateur, ce qui peut aussi bloquer les lectures suivantes. L'utilisateur
+  // déclenche l'audio explicitement.
   const play = (hanzi: string): void => {
     const outcome = speak(hanzi)
     setAudioHint(
@@ -454,20 +451,24 @@ function RevealExercise({
     <div className="flex flex-col gap-4">
       {prompt.promptKind === 'hanzi' && <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>}
       {prompt.promptKind === 'sense' && <Prompt>{prompt.sense}</Prompt>}
-      {isAudio && (
-        <div className="flex flex-col items-center gap-2">
-          <button
-            type="button"
-            onClick={() => play(prompt.hanzi)}
-            className="rounded-full border border-current/20 px-5 py-3 text-lg"
-          >
-            🔊 Écouter
-          </button>
-          {audioHint !== null && (
-            <p className="max-w-xs text-center text-xs opacity-70">{audioHint}</p>
-          )}
-        </div>
-      )}
+      {isAudio &&
+        (audioEnabled ? (
+          <div className="flex flex-col items-center gap-2">
+            <button
+              type="button"
+              onClick={() => play(prompt.hanzi)}
+              className="rounded-full border border-current/20 px-5 py-3 text-lg"
+            >
+              🔊 Écouter
+            </button>
+            {audioHint !== null && (
+              <p className="max-w-xs text-center text-xs opacity-70">{audioHint}</p>
+            )}
+          </div>
+        ) : (
+          // audio désactivé : on montre le hanzi pour ne pas laisser une carte sans énoncé
+          <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>
+        ))}
       {!revealed ? (
         <RevealButton onReveal={onReveal} />
       ) : (
