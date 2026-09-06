@@ -3,10 +3,11 @@
  * voix chinoise manque, on n'empêche jamais la révision — on renvoie un
  * `SpeakOutcome` pour que l'UI puisse expliquer un éventuel silence.
  *
- * Choix de conception : on fixe `utterance.lang` et on **laisse le système
- * choisir sa voix par défaut** pour cette langue. Forcer `utterance.voice` sur la
- * première voix `zh-*` de la liste tombe souvent sur une voix « nouveauté »
- * (Eddy, Flo…) qui reste muette.
+ * Sélection de la voix : Chrome, laissé seul avec `lang='zh-CN'`, prend la
+ * première voix `zh-*` de la liste — souvent une voix « personnage » (Eddy,
+ * Flo, Grandpa…) qui reste muette. On choisit donc explicitement une voix
+ * « normale » (nom sans parenthèse : Tingting, Meijia, Sinji…), en préférant
+ * zh-CN puis les voix locales.
  *
  * Pièges gérés :
  *  - `getVoices()` peut renvoyer `[]` au premier appel (liste asynchrone) ;
@@ -43,9 +44,29 @@ if (canSpeak() && typeof window.speechSynthesis.addEventListener === 'function')
   })
 }
 
+/** Note plus la voix est adaptée, plus le score est bas. */
+function score(voice: SpeechSynthesisVoice): number {
+  const lang = voice.lang.replace('_', '-').toLowerCase()
+  let s = 0
+  // nom « simple » (Tingting, Meijia…) plutôt qu'une voix personnage localisée
+  if (!/[(（]/.test(voice.name)) s -= 8
+  if (lang.startsWith('zh-cn')) s -= 4
+  else if (lang.startsWith('zh')) s -= 2
+  if (voice.localService) s -= 1
+  return s
+}
+
+function chineseVoice(): SpeechSynthesisVoice | null {
+  const zh = voices().filter((v) => CHINESE_LANG.test(v.lang.replace('_', '-')))
+  if (zh.length === 0) {
+    return null
+  }
+  return [...zh].sort((a, b) => score(a) - score(b))[0] ?? null
+}
+
 /** Une voix chinoise est-elle installée sur le système ? */
 export function hasChineseVoice(): boolean {
-  return voices().some((v) => CHINESE_LANG.test(v.lang.replace('_', '-')))
+  return chineseVoice() !== null
 }
 
 // Empêche le GC de couper un énoncé en cours (bug Chrome) : référence retenue
@@ -58,10 +79,13 @@ export function speak(text: string, lang = 'zh-CN'): SpeakOutcome {
   }
   try {
     const synth = window.speechSynthesis
-    const hasVoice = hasChineseVoice()
+    const voice = chineseVoice()
 
     const utterance = new SpeechSynthesisUtterance(text)
-    utterance.lang = lang
+    utterance.lang = voice ? voice.lang : lang
+    if (voice) {
+      utterance.voice = voice
+    }
     utterance.onend = () => pinned.delete(utterance)
     utterance.onerror = () => pinned.delete(utterance)
     pinned.add(utterance)
@@ -70,7 +94,7 @@ export function speak(text: string, lang = 'zh-CN'): SpeakOutcome {
     synth.resume() // Chrome reste parfois « en pause » après un cancel
     synth.speak(utterance)
 
-    return hasVoice ? 'spoken' : 'no-chinese-voice'
+    return voice ? 'spoken' : 'no-chinese-voice'
   } catch {
     return 'error'
   }
