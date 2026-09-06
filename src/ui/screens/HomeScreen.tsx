@@ -20,6 +20,7 @@ export interface HomeScreenProps {
   onStartSession: () => void
   onStartLesson: () => void
   onOpenSettings: () => void
+  onOpenBackups: () => void
 }
 
 interface HomeData {
@@ -37,6 +38,7 @@ export function HomeScreen({
   onStartSession,
   onStartLesson,
   onOpenSettings,
+  onOpenBackups,
 }: HomeScreenProps): JSX.Element {
   const [data, setData] = useState<HomeData | null>(null)
 
@@ -83,13 +85,22 @@ export function HomeScreen({
           <h1 className="text-2xl font-semibold">HSK Trainer</h1>
           <p className="text-sm opacity-70">Série : {formatStreak(data.streak)}</p>
         </div>
-        <button
-          type="button"
-          onClick={onOpenSettings}
-          className="rounded-lg border border-current/20 px-3 py-1 text-sm font-medium"
-        >
-          Réglages
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={onOpenBackups}
+            className="rounded-lg border border-current/20 px-3 py-1 text-sm font-medium"
+          >
+            Sauvegardes
+          </button>
+          <button
+            type="button"
+            onClick={onOpenSettings}
+            className="rounded-lg border border-current/20 px-3 py-1 text-sm font-medium"
+          >
+            Réglages
+          </button>
+        </div>
       </header>
 
       <section className="grid grid-cols-2 gap-3">

@@ -81,4 +81,14 @@ describe('App', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Annuler' }))
     expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
   })
+
+  it('ouvre les sauvegardes depuis l’accueil et y revient', async () => {
+    render(<App bootConfig={config('app-backups')} />)
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Sauvegardes' }))
+    expect(await screen.findByRole('heading', { name: 'Sauvegardes' })).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Retour' }))
+    expect(await screen.findByRole('heading', { name: 'HSK Trainer' })).toBeInTheDocument()
+  })
 })

@@ -78,6 +78,7 @@ describe('HomeScreen', () => {
         onStartSession={onStart}
         onStartLesson={onLesson}
         onOpenSettings={vi.fn()}
+        onOpenBackups={vi.fn()}
       />,
     )
 
@@ -102,6 +103,7 @@ describe('HomeScreen', () => {
         onStartSession={vi.fn()}
         onStartLesson={onLesson}
         onOpenSettings={vi.fn()}
+        onOpenBackups={vi.fn()}
       />,
     )
 
@@ -121,6 +123,7 @@ describe('HomeScreen', () => {
         onStartSession={vi.fn()}
         onStartLesson={vi.fn()}
         onOpenSettings={vi.fn()}
+        onOpenBackups={vi.fn()}
       />,
     )
 

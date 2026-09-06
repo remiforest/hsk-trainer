@@ -8,6 +8,7 @@ import { HomeScreen } from './screens/HomeScreen'
 import { LessonScreen } from './screens/LessonScreen'
 import { LoadingScreen } from './screens/LoadingScreen'
 import { RecoveryScreen } from './screens/RecoveryScreen'
+import { BackupScreen } from './screens/BackupScreen'
 import { SessionScreen } from './screens/SessionScreen'
 import { SettingsScreen } from './screens/SettingsScreen'
 
@@ -16,7 +17,7 @@ export interface AppProps {
   bootConfig?: BootConfig
 }
 
-type Screen = 'home' | 'session' | 'lesson' | 'settings'
+type Screen = 'home' | 'session' | 'lesson' | 'settings' | 'backups'
 
 export function App({ bootConfig }: AppProps = {}): JSX.Element {
   // Horloge figée au montage : une session dure quelques minutes, inutile de la
@@ -89,6 +90,20 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
   if (screen === 'settings') {
     return <SettingsScreen db={state.db} onDone={() => setScreen('home')} />
   }
+  if (screen === 'backups') {
+    return (
+      <BackupScreen
+        db={state.db}
+        now={now}
+        {...(timeZone !== undefined ? { timeZone } : {})}
+        onDone={() => setScreen('home')}
+        onDataReplaced={() => {
+          setScreen('home')
+          reload()
+        }}
+      />
+    )
+  }
   return (
     <HomeScreen
       db={state.db}
@@ -98,6 +113,7 @@ export function App({ bootConfig }: AppProps = {}): JSX.Element {
       onStartSession={() => setScreen('session')}
       onStartLesson={() => setScreen('lesson')}
       onOpenSettings={() => setScreen('settings')}
+      onOpenBackups={() => setScreen('backups')}
     />
   )
 }

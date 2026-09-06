@@ -14,6 +14,7 @@ import { restoreSnapshot } from '../../db/snapshots'
 import { CONTENT_VERSION } from '../../data'
 import { type SnapshotMeta } from '../../types/backup'
 import { type IntegrityReport } from '../../types/integrity'
+import { downloadText } from '../download'
 import { formatDuration } from '../format'
 
 export interface RecoveryScreenProps {
@@ -67,13 +68,8 @@ export function RecoveryScreen({
     setBusy('backup')
     try {
       const bundle = await exportProgress(db, { now, contentVersion: CONTENT_VERSION })
-      const blob = new Blob([serializeBundle(bundle)], { type: 'application/json' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `hsk-trainer-secours-${new Date(now).toISOString().slice(0, 10)}.json`
-      a.click()
-      URL.revokeObjectURL(url)
+      const stamp = new Date(now).toISOString().slice(0, 10)
+      downloadText(`hsk-trainer-secours-${stamp}.json`, serializeBundle(bundle))
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err))
     } finally {
