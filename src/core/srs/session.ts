@@ -312,13 +312,22 @@ export function currentCard(state: SessionState): Card | null {
 }
 
 export interface SessionProgress {
+  /** cartes vues au moins une fois dans la session (y compris celles encore en apprentissage) */
   done: number
   /** estimation du total pour la barre de progression */
   total: number
 }
 
 export function sessionProgress(state: SessionState): SessionProgress {
-  const done = state.finishedCardIds.length
-  const remaining = state.queue.length + (state.current ? 1 : 0)
-  return { done, total: done + remaining }
+  // Une carte compte comme « faite » dès qu'elle a reçu une note. Les cartes en
+  // apprentissage restent dans la file pour leurs paliers suivants : ne compter
+  // que celles qui ont quitté la session laisserait le compteur bloqué à 0
+  // pendant toute une session de découverte.
+  const seenInQueue = state.queue.filter((e) => e.seen > 0).length
+  const seenCurrent = state.current && state.current.seen > 0 ? 1 : 0
+  const done = state.finishedCardIds.length + seenInQueue + seenCurrent
+  const pending =
+    state.queue.filter((e) => e.seen === 0).length +
+    (state.current && state.current.seen === 0 ? 1 : 0)
+  return { done, total: done + pending }
 }

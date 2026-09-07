@@ -183,4 +183,17 @@ describe('résumé et progression', () => {
     s = answer(s, { rating: 'easy', now: T0, elapsedMs: 1000 }).state
     expect(sessionProgress(s).done).toBe(1)
   })
+
+  it('sessionProgress compte une carte revue dès sa première note, même si elle reste dans la file', () => {
+    let s = start(
+      [reviewCard('a'), reviewCard('b'), reviewCard('c')],
+      [],
+      cfg({ targetReviews: 0, targetMs: 0 }),
+    )
+    // « again » : la carte est ratée et re-programmée dans la même session.
+    s = answer(s, { rating: 'again', now: T0, elapsedMs: 1000 }).state
+    expect(sessionProgress(s)).toEqual({ done: 1, total: 3 })
+    s = answer(s, { rating: 'again', now: T0 + MIN, elapsedMs: 1000 }).state
+    expect(sessionProgress(s)).toEqual({ done: 2, total: 3 })
+  })
 })
