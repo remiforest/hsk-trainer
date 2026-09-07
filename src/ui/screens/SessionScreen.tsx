@@ -17,7 +17,7 @@ import { type ContentCatalog } from '../../types/content'
 import { type Settings } from '../../types/progress'
 import { type Rating } from '../../types/srs'
 import { formatDuration } from '../format'
-import { speak } from '../speak'
+import { speak, type SpeakOutcome } from '../speak'
 import { type RevealPrompt } from '../session/exercise'
 import { useSession, type SessionPhase } from '../session/useSession'
 
@@ -180,7 +180,12 @@ function SessionRunner({
 
       <section className="flex flex-1 flex-col justify-center gap-6">
         {s.exercise.kind === 'choice' && (
-          <ChoiceExercise question={s.exercise.question} phase={s.phase} onPick={s.submitChoice} />
+          <ChoiceExercise
+            question={s.exercise.question}
+            phase={s.phase}
+            audioEnabled={settings.audioEnabled}
+            onPick={s.submitChoice}
+          />
         )}
         {s.exercise.kind === 'pinyin' && (
           <PinyinExercise
@@ -265,17 +270,43 @@ function Prompt({ children, lang }: { children: ReactNode; lang?: string }): JSX
   )
 }
 
+function speakHint(outcome: SpeakOutcome): string | null {
+  return outcome === 'unsupported'
+    ? 'Synthèse vocale indisponible dans ce navigateur.'
+    : outcome === 'no-chinese-voice'
+      ? 'Aucune voix chinoise installée sur le système — le son peut manquer ou être incorrect.'
+      : outcome === 'error'
+        ? 'Lecture audio impossible.'
+        : null
+}
+
+function Hanzi({ children }: { children: ReactNode }): JSX.Element {
+  return (
+    <span lang="zh-CN" style={{ fontFamily: 'var(--font-hanzi)' }}>
+      {children}
+    </span>
+  )
+}
+
 function ChoiceExercise({
   question,
   phase,
+  audioEnabled,
   onPick,
 }: {
   question: ChoiceQuestion
   phase: SessionPhase
+  audioEnabled: boolean
   onPick: (id: string) => void
 }): JSX.Element {
   const graded = phase.kind === 'graded'
   const picked = phase.kind === 'graded' ? phase.picked : null
+  const [audioHint, setAudioHint] = useState<string | null>(null)
+
+  const play = (hanzi: string): void => {
+    setAudioHint(speakHint(speak(hanzi)))
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {question.promptKind === 'hanzi' ? (
@@ -293,20 +324,62 @@ function ChoiceExercise({
               : o.id === picked
                 ? 'border-red-600 bg-red-500/10'
                 : 'border-current/10 opacity-50'
+
+          if (!graded) {
+            return (
+              <button
+                key={o.id}
+                type="button"
+                onClick={() => onPick(o.id)}
+                className={`rounded-lg border px-4 py-3 text-lg ${tone}`}
+                {...(o.lang === 'zh' ? { lang: 'zh-CN' } : {})}
+              >
+                {o.label}
+              </button>
+            )
+          }
+
+          // Après la note : la proposition n'est plus cliquable, on l'enrichit du
+          // pinyin, du sens et d'un bouton d'écoute (un <button> ne peut pas être
+          // imbriqué dans un <button>, d'où le passage à un <div>).
           return (
-            <button
-              key={o.id}
-              type="button"
-              disabled={graded}
-              onClick={() => onPick(o.id)}
-              className={`rounded-lg border px-4 py-3 text-lg ${tone}`}
-              {...(o.lang === 'zh' ? { lang: 'zh-CN' } : {})}
-            >
-              {o.label}
-            </button>
+            <div key={o.id} className={`rounded-lg border px-4 py-3 ${tone}`}>
+              <div className="flex items-center justify-between gap-3">
+                <span
+                  className="text-lg"
+                  {...(o.lang === 'zh'
+                    ? { lang: 'zh-CN', style: { fontFamily: 'var(--font-hanzi)' } }
+                    : {})}
+                >
+                  {o.label}
+                </span>
+                {audioEnabled && (
+                  <button
+                    type="button"
+                    onClick={() => play(o.hanzi)}
+                    aria-label={`Écouter ${o.hanzi}`}
+                    className="shrink-0 rounded-full border border-current/20 px-2 py-0.5 text-xs"
+                  >
+                    🔊
+                  </button>
+                )}
+              </div>
+              <p className="mt-1 text-sm opacity-70">
+                {o.lang === 'fr' ? (
+                  <>
+                    <Hanzi>{o.hanzi}</Hanzi> {o.pinyin}
+                  </>
+                ) : (
+                  <>
+                    {o.pinyin} · {o.sense}
+                  </>
+                )}
+              </p>
+            </div>
           )
         })}
       </div>
+      {audioHint !== null && <p className="text-center text-xs opacity-70">{audioHint}</p>}
     </div>
   )
 }
@@ -494,16 +567,7 @@ function RevealExercise({
   // utilisateur, ce qui peut aussi bloquer les lectures suivantes. L'utilisateur
   // déclenche l'audio explicitement.
   const play = (hanzi: string): void => {
-    const outcome = speak(hanzi)
-    setAudioHint(
-      outcome === 'unsupported'
-        ? 'Synthèse vocale indisponible dans ce navigateur.'
-        : outcome === 'no-chinese-voice'
-          ? 'Aucune voix chinoise installée sur le système — le son peut manquer ou être incorrect.'
-          : outcome === 'error'
-            ? 'Lecture audio impossible.'
-            : null,
-    )
+    setAudioHint(speakHint(speak(hanzi)))
   }
 
   if (prompt.kind === 'grammar') {

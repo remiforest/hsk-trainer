@@ -132,6 +132,32 @@ describe('SessionScreen', () => {
     expect(screen.getAllByText(hanzi)).toHaveLength(1)
   })
 
+  it('QCM en hanzi : après la note, chaque proposition montre pinyin, sens et bouton d’écoute', async () => {
+    const db = await seed([reviewCard('w-0001', { cardType: 'sense_to_hanzi' })])
+    const user = userEvent.setup()
+
+    render(
+      <SessionScreen
+        db={db}
+        catalog={getCatalog()}
+        timeZone="UTC"
+        clock={() => NOW}
+        rng={() => 0}
+        onFinish={vi.fn()}
+      />,
+    )
+
+    // énoncé = le sens ; options = des hanzi
+    await screen.findByText('bonjour')
+    await user.click(screen.getByRole('button', { name: '你好' }))
+
+    // correction : pinyin + sens sous le hanzi, et une écoute par proposition
+    expect(screen.getByText('nǐ hǎo · bonjour')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Écouter 你好' })).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: /^Écouter / }).length).toBeGreaterThan(1)
+    expect(screen.getByRole('button', { name: 'Bien' })).toBeInTheDocument()
+  })
+
   it('mode « extra » : déroule une carte mûre non encore due', async () => {
     const db = await seed([reviewCard('w-0001', { due: NOW + 3 * 24 * HOUR })])
     const onFinish = vi.fn()

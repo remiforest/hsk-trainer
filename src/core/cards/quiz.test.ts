@@ -49,6 +49,14 @@ describe('buildChoiceQuestion', () => {
     expect(q?.options.find((o) => o.id === q.correctId)?.label).toBe('大')
   })
 
+  it('chaque option porte hanzi / pinyin / sens pour l’écran de correction', () => {
+    const card = makeCard({ itemId: 'w-0002', cardType: 'sense_to_hanzi' })
+    const q = buildChoiceQuestion(card, catalog, seededRng(7))
+    const correct = q?.options.find((o) => o.id === q.correctId)
+    expect(correct).toMatchObject({ hanzi: '大', pinyin: 'dà', sense: 'grand' })
+    expect(q?.options.every((o) => o.hanzi !== '' && o.pinyin !== '' && o.sense !== '')).toBe(true)
+  })
+
   it('audio→sens : promptKind audio, hanzi disponible pour la synthèse', () => {
     const card = makeCard({ itemId: 'w-0005', cardType: 'audio_to_sense' })
     const q = buildChoiceQuestion(card, catalog, seededRng(3))

@@ -46,6 +46,10 @@ export interface ChoiceOption {
   id: string
   label: string
   lang: 'fr' | 'zh'
+  /** contenu complet du mot, pour l'écran de correction (audio, pinyin, sens) */
+  hanzi: string
+  pinyin: string
+  sense: string
 }
 
 export interface ChoiceQuestion {
@@ -113,6 +117,9 @@ export function buildChoiceQuestion(
       id: w.id,
       label: label(w),
       lang: isSenseToHanzi ? 'zh' : 'fr',
+      hanzi: w.hanzi,
+      pinyin: w.pinyin,
+      sense: w.fr,
     })),
     correctId: word.id,
   }
