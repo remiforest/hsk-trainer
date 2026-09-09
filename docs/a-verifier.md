@@ -6,6 +6,20 @@ avant d'être considérés comme définitifs.
 
 ---
 
+## `w-0008 喂` — ton (wéi / wèi)
+
+- **Décision** : on garde `wéi` (2e ton), la prononciation courante au téléphone /
+  pour héler quelqu'un, telle qu'enseignée par plusieurs manuels HSK. La fiche et
+  l'exemple `喂，你好！` restent en `wéi`.
+- **Réserve connue et acceptée** : le ton de citation au dictionnaire (Xinhua,
+  CC-CEDICT) est `wèi` (4e ton), et la synthèse vocale lit `wèi`. On accepte cet
+  écart fiche/audio pour ce mot précis plutôt que de retenir une lecture moins
+  utile à l'oral réel.
+- **Piste si on veut supprimer l'écart** : champ `note` optionnel sur `Word`
+  (« au téléphone : wéi »), ou lecture audio pilotée par le pinyin plutôt que par
+  le hanzi.
+- **Statut** : tranché (garder `wéi`), écart TTS accepté
+
 ## Liste HSK 1 — effectif
 
 - **Doute** : le jeu de données contient **159** entrées « niveauHsk 1 » alors que
