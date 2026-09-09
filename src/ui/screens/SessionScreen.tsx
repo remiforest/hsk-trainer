@@ -192,6 +192,7 @@ function SessionRunner({
             key={s.card?.id ?? s.exercise.question.hanzi}
             question={s.exercise.question}
             phase={s.phase}
+            audioEnabled={settings.audioEnabled}
             onSubmit={s.submitPinyin}
             onRetry={s.retry}
           />
@@ -285,6 +286,46 @@ function Hanzi({ children }: { children: ReactNode }): JSX.Element {
     <span lang="zh-CN" style={{ fontFamily: 'var(--font-hanzi)' }}>
       {children}
     </span>
+  )
+}
+
+/**
+ * Récapitulatif d'un mot sur une page de correction : hanzi, pinyin, sens et
+ * écoute. `showHanzi` à `false` quand le hanzi est déjà l'énoncé à l'écran.
+ */
+function WordSummary({
+  hanzi,
+  pinyin,
+  sense,
+  audioEnabled,
+  showHanzi = true,
+}: {
+  hanzi: string
+  pinyin: string
+  sense: string
+  audioEnabled: boolean
+  showHanzi?: boolean
+}): JSX.Element {
+  const [audioHint, setAudioHint] = useState<string | null>(null)
+  return (
+    <div className="flex flex-col items-center gap-1.5 text-center">
+      {showHanzi && <Prompt lang="zh-CN">{hanzi}</Prompt>}
+      <p className="text-lg opacity-80" lang="zh-CN">
+        {pinyin}
+      </p>
+      <p className="text-lg">{sense}</p>
+      {audioEnabled && (
+        <button
+          type="button"
+          onClick={() => setAudioHint(speakHint(speak(hanzi)))}
+          aria-label={`Écouter ${hanzi}`}
+          className="mt-1 rounded-full border border-current/20 px-4 py-1.5 text-sm"
+        >
+          🔊 Écouter
+        </button>
+      )}
+      {audioHint !== null && <p className="max-w-xs text-xs opacity-70">{audioHint}</p>}
+    </div>
   )
 }
 
@@ -387,11 +428,13 @@ function ChoiceExercise({
 function PinyinExercise({
   question,
   phase,
+  audioEnabled,
   onSubmit,
   onRetry,
 }: {
   question: PinyinQuestion
   phase: SessionPhase
+  audioEnabled: boolean
   onSubmit: (correct: boolean) => void
   onRetry: () => void
 }): JSX.Element {
@@ -475,9 +518,13 @@ function PinyinExercise({
                 : '✗ Incorrect'}
           </p>
           {(verdict === 'correct' || showAnswer) && (
-            <p className="opacity-70">
-              Réponse : <span lang="zh-CN">{question.referencePinyin}</span>
-            </p>
+            <WordSummary
+              hanzi={question.hanzi}
+              pinyin={question.referencePinyin}
+              sense={question.sense}
+              audioEnabled={audioEnabled}
+              showHanzi={false}
+            />
           )}
           {verdict !== 'correct' && (
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -614,12 +661,14 @@ function RevealExercise({
       {!revealed ? (
         <RevealButton onReveal={onReveal} />
       ) : (
-        <div className="flex flex-col items-center gap-2">
-          {!hanziIsPrompt && <Prompt lang="zh-CN">{prompt.hanzi}</Prompt>}
-          <p className="text-lg opacity-80" lang="zh-CN">
-            {prompt.pinyin}
-          </p>
-          <p className="text-lg">{prompt.sense}</p>
+        <div className="flex flex-col items-center gap-3">
+          <WordSummary
+            hanzi={prompt.hanzi}
+            pinyin={prompt.pinyin}
+            sense={prompt.sense}
+            audioEnabled={audioEnabled}
+            showHanzi={!hanziIsPrompt}
+          />
           <Examples list={prompt.examples} audioEnabled={audioEnabled} onSpeak={play} />
         </div>
       )}

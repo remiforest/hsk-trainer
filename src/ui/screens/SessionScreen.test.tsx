@@ -97,7 +97,8 @@ describe('SessionScreen', () => {
 
     // « Réessayer » reste offert même après avoir révélé la réponse
     await user.click(screen.getByRole('button', { name: 'Voir la réponse' }))
-    expect(screen.getByText(/Réponse :/)).toBeInTheDocument()
+    expect(screen.getByText('nǐ hǎo')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Écouter 你好' })).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Réessayer' }))
 
@@ -130,6 +131,29 @@ describe('SessionScreen', () => {
 
     // avant le correctif, l'énoncé + le bloc de révélation affichaient 不客气 deux fois
     expect(screen.getAllByText(hanzi)).toHaveLength(1)
+  })
+
+  it('carte en reconnaissance : la page de réponse donne pinyin, sens et écoute', async () => {
+    const db = await seed([reviewCard('w-0001')]) // 你好 / nǐ hǎo / bonjour
+    const user = userEvent.setup()
+
+    render(
+      <SessionScreen
+        db={db}
+        catalog={getCatalog()}
+        timeZone="UTC"
+        clock={() => NOW}
+        rng={() => 0}
+        onFinish={vi.fn()}
+      />,
+    )
+
+    await user.click(await screen.findByRole('button', { name: /Afficher la réponse/ }))
+
+    // pinyin (aussi présent dans l'exemple), sens, et écoute du mot
+    expect(screen.getAllByText('nǐ hǎo').length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText('bonjour')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Écouter 你好' })).toBeInTheDocument()
   })
 
   it('QCM en hanzi : après la note, chaque proposition montre pinyin, sens et bouton d’écoute', async () => {
